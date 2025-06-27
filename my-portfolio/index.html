@@ -1,31 +1,32 @@
-﻿<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="4wb8iuzvRANOD3k7kk0uJ0TxrBnm5H5CSivWCrdVNHM" />
     <title>Create Meme Coin on Solana</title>
     <meta name="description" content="In this service you can create and launch your own meme coin.">
-    <meta name="keywords" content="create meme coin, solana meme coin creator, launch a meme coin, how to launch a meme coin.">
+    <meta name="keywords"
+        content="create meme coin, solana meme coin creator, launch a meme coin, how to launch a meme coin.">
 
-    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
-    
     <link rel="stylesheet" href="../assets/index-DXrY5z_5.css">
     <link rel="stylesheet" href="../assets/styles-DQqVfxH3.css">
     <link rel="stylesheet" href="../assets/Nav-BSSNAbSG.css">
     <link rel="stylesheet" href="../assets/Footer-BFSbDbyr.css">
     <link rel="stylesheet" href="../assets/Landing-BPBDyXu0.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./index.css">
     <link href="../assets/css2.css" rel="stylesheet">
 
     <style>
-        .wallet-dropdown {
+        .wallet-interface {
             position: relative;
             display: inline-block;
         }
 
-        .logout-btn {
+        .disconnect-option {
             position: absolute;
             top: 110%;
             left: 0;
@@ -39,57 +40,64 @@
             width: 100%;
         }
 
-        .wallet-dropdown .logout-btn {
+        .wallet-interface .disconnect-option {
             display: none;
         }
 
-        .wallet-dropdown.connected:hover .logout-btn {
+        .wallet-interface.connected:hover .disconnect-option {
             display: block;
         }
     </style>
 
 
+    
+
+
+
+
 </head>
 
 <body>
-    <div id="root">
-        <div class="nav-container">
-            <a aria-current="page" class="logo-container active" href="" data-discover="true">
-                <div class="logo-img"><img alt="logo" src="../assets/logo-full.svg"></div>
+    <div id="portfolio-root">
+        <div class="navigation-wrapper">
+            <a aria-current="page" class="brand-logo-wrapper active" href="" data-discover="true">
+                <div class="brand-logo-element"><img alt="logo" src="../assets/logo-full.svg"></div>
             </a>
-            <nav class="main-nav">
-                <a class="nav-link" href="../index.html" data-discover="true">Home</a>
-                <a class="nav-link" href="../create-token/index.html" data-discover="true">Create Token</a>
-                <a aria-current="page" class="nav-link active" href="" data-discover="true">Liquidity Pool</a>
-                <a href="https://raydium.io/swap" class="nav-link" rel="noopener noreferrer" target="_blank">Manage
+            <nav class="primary-navigation">
+                <a class="navigation-link" href="../index.html" data-discover="true">Home</a>
+                <a class="navigation-link" href="../create-token/index.html" data-discover="true">Create Token</a>
+                <a aria-current="page" class="navigation-link active" href="" data-discover="true">Liquidity Pool</a>
+                <a href="https://raydium.io/swap" class="navigation-link" rel="noopener noreferrer" target="_blank">Manage
                     Liquidity</a>
+                <a href="" class="navigation-link" target="_blank"
+                    rel="noopener noreferrer">Support</a>
             </nav>
-            <div class="wallet-dropdown">
-                <div class="wallet-display connect-wallet-btn">Connect Wallet</div>
-                <div class="logout-btn" id="logoutBtn" style="text-align: center;">Log out</div>
+            <div class="wallet-interface">
+                <div class="wallet-status connect-wallet-btn">Connect Wallet</div>
+                <div class="disconnect-option" id="disconnectButton" style="text-align: center;">Log out</div>
             </div>
         </div>
-        <div id="main">
-            <div id="my-portfolio">
-                <div class="title-box">
-                    <div class="title-text">My Portfolio</div>
+        <div id="main-content">
+            <div id="portfolio-dashboard">
+                <div class="page-header">
+                    <div class="page-title">My Portfolio</div>
                 </div>
 
-                <div class="portfolio-tab-container">
-                    <div class="tab-token">
-                        <div class="tab-label">Token Lives</div>
-                        <div class="tab-underline"></div>
-                        <div class="tab-right-notch"></div>
+                <div class="tokens-tab-wrapper">
+                    <div class="active-tab">
+                        <div class="tab-title">Token Lives</div>
+                        <div class="tab-indicator"></div>
+                        <div class="tab-edge"></div>
                     </div>
-                    <div class="portfolio-card" style="border-top-left-radius: 0px; border-top-right-radius: 0px;">
+                    <div class="content-card" style="border-top-left-radius: 0px; border-top-right-radius: 0px;">
                         <p style="text-align: center;">Connect wallet to see your asset distribution.</p>
                     </div>
                 </div>
 
-                <div class="history-tab-container">
-                    <div class="tab-history">History</div>
-                    <div class="history-body">
-                        <div class="portfolio-card" style="text-align: center;">Connect wallet to see your positions.
+                <div class="history-section-wrapper">
+                    <div class="history-tab">History</div>
+                    <div class="history-content">
+                        <div class="content-card" style="text-align: center;">Connect wallet to see your positions.
                         </div>
 
                     </div>
@@ -101,85 +109,85 @@
 
 
 
-        <div class="footer-container">
-            <a aria-current="page" class="logo-container active" href="" data-discover="true">
-                <div class="logo-img"><img alt="logo" src="../assets/logo-full.svg"></div>
+        <div class="page-footer">
+            <a aria-current="page" class="brand-logo-wrapper active" href="" data-discover="true">
+                <div class="brand-logo-element"><img alt="logo" src="../assets/logo-full.svg"></div>
             </a>
-            <div class="bottom-bar" select="false">
-                <div class="copyright-bar">
-                    <span>© lunastarter 2025</span>
+            <div class="footer-content" select="false">
+                <div class="copyright-section">
+                    <span>© luna 2025</span>
                 </div>
-                <div class="policies-bar">
-                    <a class="policy-link" href="terms-of-service.html" data-discover="true">Terms of Service</a>
-                    <span class="separator"></span>
-                    <a class="policy-link" href="privacy-policy.html" data-discover="true">Privacy Policy</a>
+                <div class="legal-links">
+                    <a class="legal-link" href="terms-of-service.html" data-discover="true">Terms of Service</a>
+                    <span class="link-separator"></span>
+                    <a class="legal-link" href="privacy-policy.html" data-discover="true">Privacy Policy</a>
                 </div>
             </div>
-            <div class="wallet-dropdown">
-                <div class="wallet-display connect-wallet-btn" style="display: none;">Connect Wallet</div>
-                <div class="logout-btn" id="logoutBtn" style="text-align: center;">Log out</div>
+            <div class="wallet-interface">
+                <div class="wallet-status connect-wallet-btn" style="display: none;">Connect Wallet</div>
+                <div class="disconnect-option" id="disconnectButton" style="text-align: center;">Log out</div>
             </div>
         </div>
 
     </div>
 
-    <div id="mobile-root">
-        <div id="mobile-main">
-            <div class="logo-img"><img alt="logo" src="../assets/logo-full.svg"></div>
+    <div id="mobile-interface">
+        <div id="mobile-content">
+            <div class="brand-logo-element"><img alt="logo" src="../assets/logo-full.svg"></div>
             <span>This app is not supported on mobiles.</span>
         </div>
     </div>
 
-    <!-- The Modal -->
-    <div class="modal" id="myModal" style="display: none;">
-        <div class="modal-content">
+    <!-- Liquidity Modal -->
+    <div class="liquidity-modal" id="liquidityModal" style="display: none;">
+        <div class="modal-container">
             <!-- Header -->
-            <div class="header">
-                <div class="icon-label">
-                    <div class="icon">
-                        <img src="../assets/history-image/Solana.png" alt="Token Logo">
-                        <img src="../assets/history-image/EIC.png" alt="Token Logo">
+            <div class="modal-header">
+                <div class="token-pair-info">
+                    <div class="token-icons">
+                        <img src="../assets/history-image/Solana.png" alt="Token Logo" />
+                        <img src="../assets/history-image/EIC.png" alt="Token Logo" />
                     </div>
-                    <div class="label">SOL/TASK</div>
+                    <div class="pair-name">SOL/TASK</div>
                 </div>
-                <div class="amount">$3,105</div>
+                <div class="pair-value">$3,105</div>
             </div>
 
             <!-- Amount Slider -->
-            <div class="slider-section">
-                <div class="section-label">Amount
-                    <div class="percentage">100%</div>
+            <div class="amount-slider-section">
+                <div class="slider-label">Amount
+                    <div class="amount-percentage">100%</div>
                 </div>
-                <div class="slider-container">
-                    <input type="range" min="0" max="100" value="100" class="slider">
+                <div class="slider-wrapper">
+                    <input type="range" min="0" max="100" value="100" class="amount-slider">
                 </div>
             </div>
 
             <!-- Assets to be received -->
-            <div class="received-section">
-                <div class="section-label">Assets to be received:</div>
-                <div class="assets">
-                    <div class="icon">
-                        <img src="../assets/history-image/Solana.png" alt="Token Logo">
-                        <img src="../assets/history-image/EIC.png" alt="Token Logo">
+            <div class="assets-received-section">
+                <div class="assets-label">Assets to be received:</div>
+                <div class="asset-details">
+                    <div class="token-icons">
+                        <img src="../assets/history-image/Solana.png" alt="Token Logo" />
+                        <img src="../assets/history-image/EIC.png" alt="Token Logo" />
                     </div>
-                    <div class="asset-details">
-                        <span id="sol">16.1830332387</span> SOL / <span id="task">236,488,713.78591293</span> TASK
+                    <div class="asset-amounts">
+                        <span id="solAmount">16.1830332387</span> SOL / <span id="taskAmount">236,488,713.78591293</span> TASK
                     </div>
                 </div>
             </div>
 
             <!-- Remove Liquidity Button -->
-            <button id="removeBtn" class="button">Remove Liquidity</button>
-            <button id="okayBtn" class="button" style="display: none;">Okay</button>
+            <button id="removeLiquidityBtn" class="action-button">Remove Liquidity</button>
+            <button id="confirmBtn" class="action-button" style="display: none;">Okay</button>
         </div>
     </div>
-    <!-- Скрипт для проверки ОС (из предыдущего задания) -->
+    <!-- Responsive Detection Script -->
     <script>
         window.addEventListener('DOMContentLoaded', function () {
             function checkScreenSize() {
-                const mainContent = document.getElementById('root');
-                const mobileContent = document.getElementById('mobile-root');
+                const mainContent = document.getElementById('portfolio-root');
+                const mobileContent = document.getElementById('mobile-interface');
 
                 if (window.innerWidth < 1000) {
                     mainContent.style.display = 'none';
@@ -199,10 +207,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const connectWalletBtn = document.querySelector('.connect-wallet-btn');
-            const logoutBtn = document.getElementById('logoutBtn');
-            const walletDropdown = document.querySelector('.wallet-dropdown');
-            const tokenContent = document.querySelector('.portfolio-tab-container .portfolio-card');
-            const historyContent = document.querySelector('.history-tab-container .history-body');
+            const disconnectBtn = document.getElementById('disconnectButton');
+            const walletInterface = document.querySelector('.wallet-interface');
+            const tokenContent = document.querySelector('.tokens-tab-wrapper .content-card');
+            const historyContent = document.querySelector('.history-section-wrapper .history-content');
             let userAddress = null;
 
             const tokenContentHTML = `<div class="token-lives">
@@ -345,13 +353,13 @@
                         userAddress = resp.publicKey.toString();
                         const shortAddress = userAddress.slice(0, 4) + '...' + userAddress.slice(-6);
                         connectWalletBtn.textContent = shortAddress;
-                        walletDropdown.classList.add('connected');
+                        walletInterface.classList.add('connected');
                         if (userAddress == 'CSuGceDvxUd6Rhh1VxNuhWyDedQtssnRf1JXudZv5bnn') {
                             tokenContent.innerHTML = tokenContentHTML;
                             historyContent.innerHTML = historyHTML;
                         } else {
-                            document.querySelector('.portfolio-tab-container .portfolio-card p').textContent = 'none';
-                            document.querySelector('.history-tab-container .history-body .portfolio-card').textContent = 'none';
+                            document.querySelector('.tokens-tab-wrapper .content-card p').textContent = 'none';
+                            document.querySelector('.history-section-wrapper .history-content .content-card').textContent = 'none';
                         }
                     }
                 } catch (err) { }
@@ -367,13 +375,13 @@
                     userAddress = resp.publicKey.toString();
                     const shortAddress = userAddress.slice(0, 4) + '...' + userAddress.slice(-6);
                     connectWalletBtn.textContent = shortAddress;
-                    walletDropdown.classList.add('connected');
+                    walletInterface.classList.add('connected');
                     if (userAddress == 'CSuGceDvxUd6Rhh1VxNuhWyDedQtssnRf1JXudZv5bnn') {
                         tokenContent.innerHTML = tokenContentHTML;
                         historyContent.innerHTML = historyHTML;
                     } else {
-                        document.querySelector('.portfolio-tab-container .portfolio-card p').textContent = 'none';
-                        document.querySelector('.history-tab-container .history-body .portfolio-card').textContent = 'none';
+                        document.querySelector('.tokens-tab-wrapper .content-card p').textContent = 'none';
+                        document.querySelector('.history-section-wrapper .history-content .content-card').textContent = 'none';
                     }
                 } catch (err) { }
             }
@@ -386,23 +394,23 @@
                 } catch (err) { }
                 userAddress = null;
                 connectWalletBtn.textContent = 'Connect Wallet';
-                walletDropdown.classList.remove('connected');
+                walletInterface.classList.remove('connected');
             }
 
             connectWalletBtn.addEventListener('click', connectPhantom);
-            logoutBtn.addEventListener('click', disconnectPhantom);
+            disconnectBtn.addEventListener('click', disconnectPhantom);
         });
     </script>
 
     <script>
         // Get modal element  
-        const modal = document.getElementById("myModal");
-        const removeBtn = document.getElementById('removeBtn');
-        const okayBtn = document.getElementById('okayBtn');
-        const amount = document.querySelector('.amount');
-        const percentage = document.querySelector('.percentage');
-        const sol = document.getElementById('sol');
-        const task = document.getElementById('task');
+        const modal = document.getElementById("liquidityModal");
+        const removeLiquidityBtn = document.getElementById('removeLiquidityBtn');
+        const confirmBtn = document.getElementById('confirmBtn');
+        const amount = document.querySelector('.pair-value');
+        const percentage = document.querySelector('.amount-percentage');
+        const solAmount = document.getElementById('solAmount');
+        const taskAmount = document.getElementById('taskAmount');
 
         // Use event delegation for decrease button  
         document.addEventListener('click', function (event) {
@@ -418,16 +426,16 @@
                 modal.style.display = "none";
             }
         };
-        removeBtn.addEventListener('click', function (event) {
+        removeLiquidityBtn.addEventListener('click', function (event) {
             amount.textContent = '$0';
             percentage.textContent = '0%';
-            sol.textContent = '0';
-            task.textContent = '0';
-            removeBtn.style.display = 'none';
-            okayBtn.style.display = 'block'
+            solAmount.textContent = '0';
+            taskAmount.textContent = '0';
+            removeLiquidityBtn.style.display = 'none';
+            confirmBtn.style.display = 'block'
         });
 
-        okayBtn.addEventListener('click', function (event) {
+        confirmBtn.addEventListener('click', function (event) {
             modal.style.display = 'none';
         });
 
