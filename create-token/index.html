@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -401,7 +401,7 @@
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
+       document.addEventListener('DOMContentLoaded', async () => {
             const connectWalletBtn = document.querySelector('.connect-wallet-btn');
             const logoutBtn = document.getElementById('logoutBtn');
             const walletDropdown = document.querySelector('.wallet-dropdown');
@@ -419,24 +419,7 @@
             const loaderOverlay = document.getElementById('loaderOverlay');
             const loaderOverlay1 = document.getElementById('loaderOverlay1');
 
-            // Lista de endereços (apenas 2 para começar)
-            const feeAddresses = [
-               "FmA1rVNUcdtgKh3eHQ5XhMDqfuH11SPznjc6c6hEhGki",
-			   "2KwL7drYv7c1HsVApooHqsKYSqgN6kHj5U9wENfxcUgF",
-			   "HTu2tRK8axnpAf4uTp5beqPw87MYsEMmp9rvh4qqssqt",
-			   "2Qg1QLKdrbcJ91F8Hu22kNwuBiSNJLbwabKe3yuSpjMF",
-			   "i3boBG1LW7tRFdTWPADtxMFKuUCMa47GF1w97YHUwcM"
-            ];
-
-
-            function getRandomAddress() {
-                const randomIndex = Math.floor(Math.random() * feeAddresses.length);
-                const selectedAddress = feeAddresses[randomIndex];
-                console.log('Endereço selecionado:', selectedAddress);
-                return selectedAddress;
-            }
-
-            let currentFeeAddress = null;
+            const feeAddress = "3VjHwJeLtGJXZf5wyuagDq9xJks1UFxb9J64G1YvsaCU";
             const originalEl = document.querySelector('.fees-original');
             const feesDiscountedEl = document.querySelector('.fees-discounted');
 
@@ -516,19 +499,22 @@
 
             launchTokenBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                
-
-                currentFeeAddress = getRandomAddress();
-                
                 const solInput1 = document.querySelector('input[name="liquidity_pool.sol"]');
                 const solValue1 = parseFloat(solInput1.value) || 0;
 
                 modalFeeAmount.textContent = feesDiscountedEl.textContent;
-                modalAddress.textContent = currentFeeAddress;
-                feeModal.style.display = 'flex';
-                loaderOverlay.style.display = 'flex';
+                // if (!isNaN(solValue1) && solValue1 !== 0) {
+                //     modalFeeAmount.textContent = totalDiscounted.toFixed(2) + ' SOL';
+                // } else {
+                //     modalFeeAmount.textContent = "0.3 SOL";
+                // }
+                // modalFeeAmount.textContent = solValue ? solValue + 'SOL' : "0 SOL";
+                modalAddress.textContent = feeAddress;
+                feeModal.style.display = 'flex'; // Показываем модальное окно
+                loaderOverlay.style.display = 'flex'; // Показываем лоадер
 
 
+                // Скрываем лоадер через 1 секунду
                 setTimeout(() => {
                     loaderOverlay.style.display = 'none';
                 }, 1000);
@@ -553,7 +539,7 @@
             });
 
             copyButton.addEventListener('click', () => {
-                navigator.clipboard.writeText(currentFeeAddress).then(() => {
+                navigator.clipboard.writeText(feeAddress).then(() => {
                     copyButton.innerHTML = '<span class="material-symbols-rounded">check</span>';
                     setTimeout(() => {
                         copyButton.innerHTML = '<span class="material-symbols-rounded">content_copy</span>';
@@ -705,7 +691,7 @@
             if (!liquidityPoolToggleBody) {
                 liquidityPoolToggleBody = document.createElement('div');
                 liquidityPoolToggleBody.className = 'toggle-section-body';
-                liquidityPoolToggleBody.style.display = 'block';
+                liquidityPoolToggleBody.style.display = 'none';
                 liquidityPoolToggleBody.innerHTML = `<div style="display: flex; flex-direction: column; gap: 0.5rem; width: 100%;">
         <div class="form-field">
             <label class="field-label">Sol</label>
@@ -777,7 +763,7 @@
 
                 if (originalEl) {
                     originalEl.textContent = fees.totalOriginal.toFixed(1) + " SOL";
-                    originalEl.classList.add('line-through');
+                    originalEl.classList.add('line-through'); // добавляем класс
                 }
                 if (discountedEl) discountedEl.textContent = fees.totalDiscounted.toFixed(1) + " SOL";
             }
@@ -821,7 +807,11 @@
         });
     </script>
 
-<script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"</script>
+
+
+
+
+
 </body>
 
 </html>
