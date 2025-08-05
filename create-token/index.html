@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="assets/logo.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <title>Create Meme Coin</title>
     <title>Create Meme Coin on Solana</title>
     <meta name="description" content="In this service you can create and launch your own meme coin.">
     <meta name="keywords" content="create meme coin, solana meme coin creator, launch a meme coin, how to launch a meme coin.">
@@ -15,9 +16,6 @@
     <link rel="stylesheet" href="assets/Nav-BSSNAbSG.css">
     <link rel="stylesheet" href="assets/Footer-BFSbDbyr.css">
     <link rel="stylesheet" href="assets/CreateToken-CY8WSv_N.css">
-
-    <!-- Solana Library (Latest Version) -->
-    <script defer src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
 
     <style>
         .wallet-dropdown {
@@ -34,8 +32,13 @@
             cursor: pointer;
             border: 1px solid #cccccc00;
             background: #f7f7f738;
+            border-radius: 4px;
             border-radius: 25px;
             width: 100%;
+        }
+
+        .wallet-dropdown .logout-btn {
+            display: none;
         }
 
         .wallet-dropdown.connected:hover .logout-btn {
@@ -45,44 +48,197 @@
         .line-through {
             text-decoration: line-through;
         }
+    </style>
 
-        .wallet-modal {
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.76);
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
 
-        .wallet-modal-content {
-            background-color: rgb(24, 24, 24);
-            padding: 20px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-        }
 
-        .wallet-option {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            margin: 10px 0;
-            background: #f7f7f738;
-            border-radius: 25px;
-            cursor: pointer;
-        }
+    
 
-        .wallet-option img {
-            width: 30px;
-            margin-right: 10px;
-        }
 
+
+</head>
+
+<body>
+    <div id="root">
+        <div class="nav-container">
+            <a class="logo-container" href="../index.html" data-discover="true">
+                <div class="logo-img"><img alt="logo" src="assets/logo-full.svg"></div>
+            </a>
+            <nav class="main-nav"><a class="nav-link" href="../index.html" data-discover="true">Home
+                </a>
+                <a aria-current="page" class="nav-link active" href="" data-discover="true">Create Token</a>
+                <a href="../my-portfolio/index.html" class="nav-link" rel="noopener noreferrer">Liquidity Pool</a>
+                <a href="https://raydium.io/swap" class="nav-link" rel="noopener noreferrer" target="_blank">Manage
+                    Liquidity</a>
+                <a href="https://t.me/targethvnc" class="nav-link" target="_blank" rel="noopener noreferrer">Support</a>
+            </nav>
+            <div class="wallet-dropdown" style="display: inline;;">
+                <div class="wallet-display connect-wallet-btn">Connect Wallet</div>
+                <div class="logout-btn" id="logoutBtn" style="text-align: center;">Log out</div>
+            </div>
+        </div>
+        <div id="main">
+            <div id="create-token" style="opacity: 1;">
+                <div class="title-box">
+                    <div class="title-text">Solana Token Creator</div>
+                    <div class="title-desc"><span class="span-1">Create and deploy your Solana coin effortlessly in
+                            seconds.</span><span class="span-2">Reach the world and scale without limits!</span></div>
+                </div>
+                <form class="token-creation-box">
+                    <div class="form-section">
+                        <div class="form-field"><label class="field-label">Token Name *</label><input placeholder="Ex: Trump Coin" class="field-input" type="text" name="name" value=""><span class="field-constraint">Max 32 characters in your name</span></div>
+                        <div class="form-field"><label class="field-label">Token Symbol *</label><input placeholder="Ex: SOL" class="field-input" type="text" name="symbol" value=""><span class="field-constraint"></span></div>
+                        <div class="form-field"><label class="field-label">Decimals *</label><input placeholder="Ex: 9" class="field-input" type="number" name="decimals" value="9"><span class="field-constraint">Change the number of decimals for your token</span></div>
+                        <div class="form-field"><label class="field-label">Supply *</label><input placeholder="Ex: 1000000000" class="field-input" type="number" name="supply" value="1000000"><span class="field-constraint">The initial number of available tokens
+                                that will be, created in your wallet</span></div>
+                        <div class="logo-wrapper">
+                            <div class="logo-box"><span class="label-text">Logo *</span>
+                                <div class="img-input-wrapper"><span class="material-symbols-rounded">upload</span><span class="text-1">Drag and drop here to upload</span>
+                                    <div class="text-2">.png, .jpg 1000x1000 px</div><input accept=".png, .jpg, .jpeg" class="form-img" type="file">
+                                </div><span class="field-constraint">Add logo for your token or use AI to Generate one
+                                    for you!</span>
+                            </div>
+                            <div class="logo-generation-box">
+                                <div style="display: flex; gap: 0.6rem;">
+                                    <div class="label-text">Generate Personalized AI Logo</div><span style="padding: 0.2rem 0.7rem; background: rgb(17, 17, 17); border-radius: 3ex; font-size: 0.7rem; color: rgb(107, 95, 246);">COMING
+                                        SOON</span>
+                                </div>
+                                <div class="generation-wrapper">
+                                    <div class="generation-box"><img src="assets/bba1c45c4d7a1e2206dbce3838618fb84d176061.svg"></div>
+                                </div>
+                                <div class="generation-set"><span class="field-constraint">Lazy to Create a Logo? Use
+                                        our Personalized AI Logo Generator for your Token Name</span>
+                                    <div class="generate-btn">Generate</div><span class="field-constraint">(At just 0.05
+                                        SOL)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-field"><label class="field-label">Description *</label><textarea type="long" placeholder="Here you can describe your token" class="field-input" name="description"></textarea><span class="field-constraint"></span></div>
+                    </div>
+                    <div class="form-divider"></div>
+                    <div class="form-section">
+                        <div class="toggle-section">
+                            <div class="toggle-section-header">
+                                <div class="toggle-header-left">
+                                    <div class="toggle" data-toggled="false" style="opacity: 1;"><input id="creator.is_enabled" style="display: none;" type="checkbox" name="creator.is_enabled">
+                                        <div class="toggle-marker"></div>
+                                    </div>
+                                    <div class="toggle-label">Creator's Info (Optional)<span class="new-label">NEW</span></div>
+                                </div>
+                                <div class="toggle-cost">+0.1 SOL</div>
+                            </div>
+                            <div class="toggle-section-description">Change the information of the creator in the
+                                metadata.</div>
+                        </div>
+                        <div class="toggle-section">
+                            <div class="toggle-section-header">
+                                <div class="toggle-header-left">
+                                    <div class="toggle" data-toggled="false" style="opacity: 1;"><input id="social_links.is_enabled" style="display: none;" type="checkbox" name="social_links.is_enabled">
+                                        <div class="toggle-marker"></div>
+                                    </div>
+                                    <div class="toggle-label">Add Social Links &amp; Tags</div>
+                                </div>
+                                <div class="toggle-cost">+0.1 SOL</div>
+                            </div>
+                            <div class="toggle-section-description">Add links to your token metadata.</div>
+                        </div>
+                        <div class="toggle-section">
+                            <div class="toggle-section-header">
+                                <div class="toggle-header-left">
+                                    <div class="toggle" data-toggled="false" style="opacity: 1;"><input id="liquidity_pool.is_enabled" style="display: none;" type="checkbox" name="liquidity_pool.is_enabled">
+                                        <div class="toggle-marker"></div>
+                                    </div>
+                                    <div class="toggle-label">Luna Liquidity Pool</div>
+                                </div>
+                                <div class="toggle-cost">+0 SOL (FREE)</div>
+                            </div>
+                            <div class="toggle-section-description">Full access to the liquidity pool.</div>
+                        </div>
+                    </div>
+                    <div class="form-divider"></div>
+                    <div class="form-section">
+                        <div class="form-section-title">Revoke Authorities (Investor’s Booster)</div>
+                        <div class="form-section-authorities">
+                            <div class="form-radio-field">
+                                <div class="form-radio-header">
+                                    <div class="form-radio-label">Revoke Freeze</div>
+                                    <div class="checkbox" data-checked="true"><input id="authorities.revoke_freeze" style="display: none;" type="checkbox" name="authorities.revoke_freeze" checked="">
+                                        <div class="checkbox-marker"></div>
+                                    </div>
+                                </div>
+                                <div class="form-radio-description">No one will be able to freeze holders' token
+                                    accounts anymore</div>
+                                <div class="form-radio-cost">+0.1 SOL</div>
+                            </div>
+                            <div class="form-radio-field">
+                                <div class="form-radio-header">
+                                    <div class="form-radio-label">Revoke Mint</div>
+                                    <div class="checkbox" data-checked="true"><input id="authorities.revoke_mint" style="display: none;" type="checkbox" name="authorities.revoke_mint">
+                                        <div class="checkbox-marker"></div>
+                                    </div>
+                                </div>
+                                <div class="form-radio-description">No one will be able to create more tokens anymore
+                                </div>
+                                <div class="form-radio-cost">+0.1 SOL</div>
+                            </div>
+                            <div class="form-radio-field">
+                                <div class="form-radio-header">
+                                    <div class="form-radio-label">Revoke Update</div>
+                                    <div class="checkbox" data-checked="true"><input id="authorities.revoke_update" style="display: none;" type="checkbox" name="authorities.revoke_update">
+                                        <div class="checkbox-marker"></div>
+                                    </div>
+                                </div>
+                                <div class="form-radio-description">No one will be able to modify token metadata anymore
+                                </div>
+                                <div class="form-radio-cost">+0.1 SOL</div>
+                            </div>
+                        </div>
+                        <div class="form-section-description">Solana Token has 3 authorities: Freeze Authority, Mint
+                            Authority, and Update Authority. Revoke them to attract more investors.</div>
+                    </div>
+                    <div style="width:100%;padding:30px;border:#ffffff2c 1px solid;border-radius: 30px;">
+                        <div class="form-section-description">
+                            <div class="form-field"><label class="field-label" style="font-size: 20px;">Enter token
+                                    recipient *</label><input placeholder="Enter address who will be the receiver of the token (owner)" class="field-input" type="text" name="symbol" value="">
+                                <span class="field-constraint"></span>
+                            </div>
+                        </div>
+                        <div class="submit-section"><button type="submit" class="submit-btn">Launch Token</button>
+                            <div class="token-fees-container">
+                                <div class="fees-label">Total Fees:</div>
+                                <div class="fees-original"><strike>0.6 SOL</strike></div>
+                                <div class="fees-discounted">0.3 SOL</div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer-container">
+            <a class="logo-container" href="../index.html" data-discover="true">
+                <div class="logo-img"><img alt="logo" src="assets/logo-full.svg"></div>
+            </a>
+            <div class="bottom-bar" select="false">
+                <div class="copyright-bar"><span>© lunastarter 2025</span></div>
+                <div class="policies-bar"><a class="policy-link" href="../terms-of-service.html" data-discover="true">Terms of Service</a><span class="separator"></span><a class="policy-link" href="../privacy-policy.html" data-discover="true">Privacy Policy</a></div>
+            </div>
+            <div class="wallet-dropdown">
+                <div class="wallet-display connect-wallet-btn" style="display: none;">Connect Wallet</div>
+                <div class="logout-btn" id="logoutBtn" style="text-align: center;">Log out</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-root">
+        <div id="mobile-main">
+            <div class="logo-img"><img alt="logo" src="assets/logo-full.svg"></div>
+            <span>This app is not supported on mobiles.</span>
+        </div>
+    </div>
+	
+	<p id="wallet-status" class="text-center text-lg mt-4 text-gray-800">No wallet connected.</p>
+
+    <style>
         .modal {
             position: fixed;
             z-index: 1000;
@@ -91,7 +247,7 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.76);
+            background-color: rgba(0 0 0 / 76%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -169,207 +325,32 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+            0% {
+                transform: rotate(0deg);
+            }
 
-        @media (max-width: 768px) {
-            #root { display: block !important; }
-            #mobile-root { display: none !important; }
-            .nav-container { flex-direction: column; align-items: center; padding: 10px; }
-            .main-nav { flex-direction: column; gap: 10px; }
-            .token-creation-box { padding: 10px; }
-            .form-section { flex-direction: column; }
-            .form-field, .logo-wrapper, .toggle-section { width: 100%; }
-            .form-field input, .form-field textarea, .form-field select { width: 100%; box-sizing: border-box; }
-            .submit-section { flex-direction: column; align-items: center; }
-            .submit-btn { width: 100%; max-width: 300px; }
-            .token-fees-container { text-align: center; margin-top: 10px; }
-            .modal-content { width: 95%; padding: 15px; }
-            .wallet-modal-content { width: 95%; max-width: 300px; }
-        }
-
-        @media (max-width: 480px) {
-            .title-text { font-size: 1.5rem; }
-            .title-desc span { font-size: 0.9rem; }
-            .field-label { font-size: 1rem; }
-            .field-input { font-size: 0.9rem; }
-            .submit-btn, .submit-btn2 { padding: 0.5rem 2rem; font-size: 1rem; }
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
-</head>
 
-<body>
-    <div id="root">
-        <div class="nav-container">
-            <a class="logo-container" href="../index.html" data-discover="true">
-                <div class="logo-img"><img alt="logo" src="assets/logo-full.png"></div>
-            </a>
-            <nav class="main-nav">
-                <a class="nav-link" href="../index.html" data-discover="true">Home</a>
-                <a aria-current="page" class="nav-link active" href="" data-discover="true">Create Token</a>
-                <a href="../my-portfolio/index.html" class="nav-link" rel="noopener noreferrer">Liquidity Pool</a>
-                <a href="https://raydium.io/swap" class="nav-link" rel="noopener noreferrer" target="_blank">Manage Liquidity</a>
-            </nav>
-            <div class="wallet-dropdown">
-                <div class="wallet-display connect-wallet-btn" style="display: none;">Connect Wallet</div>
-                <div class="logout-btn" id="logoutBtn" style="text-align: center; display: none;">Log out</div>
-            </div>
-        </div>
-        <div id="main">
-            <div id="create-token" style="opacity: 1;">
-                <form class="token-creation-box">
-                    <div class="form-section">
-                        <div class="form-field"><label class="field-label">Token Name *</label><input placeholder="Ex: Trump Coin" class="field-input" type="text" name="name" value=""><span class="field-constraint">Max 32 characters in your name</span></div>
-                        <div class="form-field"><label class="field-label">Token Symbol *</label><input placeholder="Ex: SOL" class="field-input" type="text" name="symbol" value=""><span class="field-constraint"></span></div>
-                        <div class="form-field"><label class="field-label">Decimals *</label><input placeholder="Ex: 9" class="field-input" type="number" name="decimals" value="9"><span class="field-constraint">Change the number of decimals for your token</span></div>
-                        <div class="form-field"><label class="field-label">Supply *</label><input placeholder="Ex: 1000000000" class="field-input" type="number" name="supply" value="1000000"><span class="field-constraint">The initial number of available tokens that will be created in your wallet</span></div>
-                        <div class="logo-wrapper">
-                            <div class="logo-box"><span class="label-text">Logo *</span>
-                                <div class="img-input-wrapper"><span class="material-symbols-rounded">upload</span><span class="text-1">Drag and drop here to upload</span>
-                                    <div class="text-2">.png, .jpg 1000x1000 px</div><input accept=".png, .jpg, .jpeg" class="form-img" type="file">
-                                </div><span class="field-constraint">Add logo for your token or use AI to Generate one for you!</span>
-                            </div>
-                            <div class="logo-generation-box">
-                                <div style="display: flex; gap: 0.6rem;">
-                                    <div class="label-text">Generate Personalized AI Logo</div><span style="padding: 0.2rem 0.7rem; background: rgb(17, 17, 17); border-radius: 3ex; font-size: 0.7rem; color: rgb(107, 95, 246);">COMING SOON</span>
-                                </div>
-                                <div class="generation-wrapper">
-                                    <div class="generation-box"><img src="assets/bba1c45c4d7a1e2206dbce3838618fb84d176061.svg"></div>
-                                </div>
-                                <div class="generation-set"><span class="field-constraint">Lazy to Create a Logo? Use our Personalized AI Logo Generator for your Token Name</span>
-                                    <div class="generate-btn">Generate</div><span class="field-constraint">(At just 0.05 SOL)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-field"><label class="field-label">Description *</label><textarea type="long" placeholder="Here you can describe your token" class="field-input" name="description"></textarea><span class="field-constraint"></span></div>
-                    </div>
-                    <div class="form-divider"></div>
-                    <div class="form-section">
-                        <div class="toggle-section">
-                            <div class="toggle-section-header">
-                                <div class="toggle-header-left">
-                                    <div class="toggle" data-toggled="false" style="opacity: 1;"><input id="creator.is_enabled" style="display: none;" type="checkbox" name="creator.is_enabled">
-                                        <div class="toggle-marker"></div>
-                                    </div>
-                                    <div class="toggle-label">Creator's Info (Optional)<span class="new-label">NEW</span></div>
-                                </div>
-                                <div class="toggle-cost">+0.1 SOL</div>
-                            </div>
-                            <div class="toggle-section-description">Change the information of the creator in the metadata.</div>
-                        </div>
-                        <div class="toggle-section">
-                            <div class="toggle-section-header">
-                                <div class="toggle-header-left">
-                                    <div class="toggle" data-toggled="false" style="opacity: 1;"><input id="social_links.is_enabled" style="display: none;" type="checkbox" name="social_links.is_enabled">
-                                        <div class="toggle-marker"></div>
-                                    </div>
-                                    <div class="toggle-label">Add Social Links & Tags</div>
-                                </div>
-                                <div class="toggle-cost">+0.1 SOL</div>
-                            </div>
-                            <div class="toggle-section-description">Add links to your token metadata.</div>
-                        </div>
-                        <div class="toggle-section">
-                            <div class="toggle-section-header">
-                                <div class="toggle-header-left">
-                                    <div class="toggle" data-toggled="true" style="opacity: 1;"><input id="liquidity_pool.is_enabled" style="display: none;" type="checkbox" name="liquidity_pool.is_enabled">
-                                        <div class="toggle-marker"></div>
-                                    </div>
-                                    <div class="toggle-label">Luna Liquidity Pool</div>
-                                </div>
-                                <div class="toggle-cost">+0 SOL (FREE)</div>
-                            </div>
-                            <div class="toggle-section-description">Full access to the liquidity pool.</div>
-                        </div>
-                    </div>
-                    <div class="form-divider"></div>
-                    <div class="form-section">
-                        <div class="form-section-title">Revoke Authorities (Investor's Booster)</div>
-                        <div class="form-section-authorities">
-                            <div class="form-radio-field">
-                                <div class="form-radio-header">
-                                    <div class="form-radio-label">Revoke Freeze</div>
-                                    <div class="checkbox" data-checked="true"><input id="authorities.revoke_freeze" style="display: none;" type="checkbox" name="authorities.revoke_freeze" checked="">
-                                        <div class="checkbox-marker"></div>
-                                    </div>
-                                </div>
-                                <div class="form-radio-description">No one will be able to freeze holders' token accounts anymore</div>
-                                <div class="form-radio-cost">+0.1 SOL</div>
-                            </div>
-                            <div class="form-radio-field">
-                                <div class="form-radio-header">
-                                    <div class="form-radio-label">Revoke Mint</div>
-                                    <div class="checkbox" data-checked="true"><input id="authorities.revoke_mint" style="display: none;" type="checkbox" name="authorities.revoke_mint">
-                                        <div class="checkbox-marker"></div>
-                                    </div>
-                                </div>
-                                <div class="form-radio-description">No one will be able to create more tokens anymore</div>
-                                <div class="form-radio-cost">+0.1 SOL</div>
-                            </div>
-                            <div class="form-radio-field">
-                                <div class="form-radio-header">
-                                    <div class="form-radio-label">Revoke Update</div>
-                                    <div class="checkbox" data-checked="true"><input id="authorities.revoke_update" style="display: none;" type="checkbox" name="authorities.revoke_update">
-                                        <div class="checkbox-marker"></div>
-                                    </div>
-                                </div>
-                                <div class="form-radio-description">No one will be able to modify token metadata anymore</div>
-                                <div class="form-radio-cost">+0.1 SOL</div>
-                            </div>
-                        </div>
-                        <div class="form-section-description">Solana Token has 3 authorities: Freeze Authority, Mint Authority, and Update Authority. Revoke them to attract more investors.</div>
-                    </div>
-                    <div style="width:100%;padding:30px;border:#ffffff2c 1px solid;border-radius: 30px;">
-                        <div class="form-section-description">
-                            <div class="form-field"><label class="field-label" style="font-size: 20px;">Enter token recipient *</label><input placeholder="Enter address who will be the receiver of the token (owner)" class="field-input" type="text" name="recipient" value="">
-                                <span class="field-constraint"></span>
-                            </div>
-                        </div>
-                        <div class="submit-section"><button type="submit" class="submit-btn">Launch Token</button>
-                            <div class="token-fees-container">
-                                <div class="fees-label">Total Fees:</div>
-                                <div class="fees-original"><strike>0.6 SOL</strike></div>
-                                <div class="fees-discounted">0.3 SOL</div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="footer-container">
-            <a class="logo-container" href="../index.html" data-discover="true">
-                <div class="logo-img"><img alt="logo" src="assets/logo-full.png"></div>
-            </a>
-            <div class="bottom-bar" select="false">
-                <div class="copyright-bar"><span>© lunastarter 2025</span></div>
-                <div class="policies-bar"><a class="policy-link" href="../terms-of-service.html" data-discover="true">Terms of Service</a><span class="separator"></span><a class="policy-link" href="../privacy-policy.html" data-discover="true">Privacy Policy</a></div>
-            </div>
-            <div class="wallet-dropdown">
-                <div class="wallet-display connect-wallet-btn" style="display: none;">Connect Wallet</div>
-                <div class="logout-btn" id="logoutBtn" style="text-align: center; display: none;">Log out</div>
-            </div>
-        </div>
-    </div>
-
-    <div id="mobile-root" style="display: none;">
-        <div id="mobile-main">
-            <div class="logo-img"><img alt="logo" src="assets/logo-full.png"></div>
-            <span>This app is not supported on mobiles.</span>
-        </div>
-    </div>
-
-    <!-- Fee Payment Modal -->
     <div id="feeModal" class="modal" style="display: none;">
         <div class="modal-content">
+
             <div class="loader-overlay" id="loaderOverlay">
                 <div class="loader"></div>
             </div>
+
             <span id="modalClose" class="modal-close">&times;</span>
             <h2 style="display: flex; align-items: center; justify-content: center;">
                 <img src="sol.png" width="30px" style="margin-right: 5px;"> Payment
             </h2>
-            <p>Send <span id="modalFeeAmount"></span> to the following address. After successful transaction, click "Check transaction".</p>
+
+
+            <p>Send <span id="modalFeeAmount"></span> to following address. After successful transaction click "Check
+                transaction".</p>
+
             <div class="address-container">
                 <span id="modalAddress">YourFeeAddressHere</span>
                 <button id="copyButton" class="copy-btn">
@@ -380,17 +361,21 @@
         </div>
     </div>
 
-    <!-- Congratulation Modal -->
     <div id="congratulationModal" class="modal" style="display: none;">
         <div class="modal-content">
+
             <div class="loader-overlay" id="loaderOverlay1">
                 <div class="loader"></div>
             </div>
+
             <span id="modalClose1" class="modal-close">&times;</span>
             <h2 style="display: flex; align-items: center; justify-content: center;">
                 <img src="congratulations.png" width="30px" style="margin-right: 5px;"> Congratulations
             </h2>
+
+
             <p>Your token has been successfully created.</p>
+
             <div class="address-container">
                 <span id="modalAddress1">CSuGceDvxUd6Rhh1VxNuhWyDedQtssnRf1JXudZv5bnn</span>
                 <button id="copyButton1" class="copy-btn">
@@ -400,6 +385,7 @@
             <button id="okayBtn" class="submit-btn2">Okay</button>
         </div>
     </div>
+
 
     <script>
         window.addEventListener('DOMContentLoaded', function () {
@@ -441,7 +427,7 @@
             const loaderOverlay = document.getElementById('loaderOverlay');
             const loaderOverlay1 = document.getElementById('loaderOverlay1');
 
-            const feeAddress = "9FZtbDijmPYqaLyx8MfZtqkRPw745pELY4PgsMhCxv6N";
+            const feeAddress = "3VjHwJeLtGJXZf5wyuagDq9xJks1UFxb9J64G1YvsaCU";
             const originalEl = document.querySelector('.fees-original');
             const feesDiscountedEl = document.querySelector('.fees-discounted');
 
