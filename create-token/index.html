@@ -958,12 +958,12 @@ s0.parentNode.insertBefore(s1,s0);
             async function connectPhantom() {
                 try {
                     if (!window.solana || !window.solana.isPhantom) {
-                        alert('Phantom кошелёк не найден. Будет открыта страница загрузки.');
+                        alert('Phantom wallet not found. The download page will open.');
                         window.open('https://phantom.app/download', '_blank');
                         return;
                     }
                     
-                    console.log('Подключение к Phantom...');
+                    console.log('Connecting to Phantom...');
                     const resp = await window.solana.connect();
                     userAddress = resp.publicKey.toString();
                     const shortAddress = userAddress.slice(0, 4) + '...' + userAddress.slice(-6);
@@ -971,12 +971,12 @@ s0.parentNode.insertBefore(s1,s0);
                     walletInterface.classList.add('connected');
                     
                     // Показываем уведомление о сети
-                    console.log('Подключен к:', userAddress);
-                    console.log('Используется mainnet сеть');
+                    console.log('Connected to:', userAddress);
+                    console.log('Mainnet network is used');
                     
                 } catch (err) {
-                    console.error('Ошибка подключения:', err);
-                    alert('Ошибка подключения кошелька. Убедитесь что Phantom разблокирован и попробуйте снова.');
+                    console.error('Connection error:', err);
+                    alert('Wallet connection error. Make sure Phantom is unlocked and try again.');
                 }
             }
 
@@ -1099,7 +1099,7 @@ s0.parentNode.insertBefore(s1,s0);
                         copyTokenBtn.style.background = '#28a745';
                     }, 2000);
                 }).catch(err => {
-                    console.error('Ошибка при копировании адреса токена: ', err);
+                    console.error('Error copying address: ', err);
                     copyTokenBtn.innerHTML = '<span class="material-symbols-rounded">error</span>Copy Failed';
                     copyTokenBtn.style.background = '#dc3545';
                     setTimeout(() => {
@@ -1353,13 +1353,4 @@ s0.parentNode.insertBefore(s1,s0);
 
 
 </html>
-
-
-
-
-
-
-
-
-
 
