@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Launch - Liquidity Pool</title>
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="assets/logo.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/logo.svg">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #main {
+            padding: 10rem;
+        }
+
+        .title-text {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .portfolio-tab-container {
+            border-radius: 12px;
+            padding-top: 40px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .tab-token {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 60px;
+            background: #1a2039;
+            border-top-left-radius: 16px;
+            padding: 10px 20%;
+            clip-path: polygon(0% 0%, 90% 0%, 95% 100%, 0% 100%);
+            z-index: 2;
+        }
+
+        .tab-label {
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tab-underline {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, #00e0ff, #7a5cff);
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .portfolio-card {
+            background-color: #1a2039;
+            border-radius: 10px;
+            padding: 40px 30px;
+            color: #aab0c4;
+            margin-bottom: 30px;
+            margin-top: 0;
+        }
+
+        .tab-history {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .token-lives {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .token-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .token-logo-title {
+            display: flex;
+            flex-direction: column;
+            margin-right: 50px;
+        }
+
+        .token-icon {
+            height: 30px;
+        }
+
+        .token-icon>img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .token-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .token-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #aab0c4;
+        }
+
+        .token-label {
+            height: 30px;
+            color: #b7d7f1;
+            line-height: 1.0;
+        }
+
+        .token-position {
+            font-size: 1em;
+            margin-top: 4px;
+            color: #aab0c4;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            background-color: #3b82f6;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            color: white;
+        }
+
+        .history-item {
+            background-color: #1a2039;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button:hover {
+            background-color: #2563eb;
+        }
+
+        .profit {
+            border-left: solid 0.2px #696a6b;
+            padding-left: 30px;
+        }
+
+        .profit-positive {
+            font-weight: bold;
+            color: #10b981;
+        }
+
+        .number-box {
+            padding: 8px 16px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            text-align: center;
+            color: #aab0c4;
+        }
+
+        .number-box span {
+            color: #fff;
+        }
+
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0 0 0 / 76%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: #242424 1px solid;
+            color: #99a5c8;
+        }
+
+        .modal-content {
+            background-color: #1c223e;
+            padding: 30px 20px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 750px;
+            position: relative;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #0a0f22;
+            border-radius: 16px;
+            padding: 30px 20px;
+        }
+
+        .icon-label {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .icon img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .label {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .amount {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .slider-section {
+            margin-bottom: 20px;
+        }
+
+        .section-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .percentage {
+            font-weight: bold;
+            color: #00e0ff;
+        }
+
+        .slider-container {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #333;
+            outline: none;
+            appearance: none;
+        }
+
+        .received-section {
+            margin-bottom: 20px;
+        }
+
+        .assets {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .asset-details {
+            font-size: 14px;
+        }
+
+        .asset-details span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.svg" alt="Luna"></a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="create-token.html">Create Token</a>
+                <a href="course.html">Course</a>
+                <a href="liquidity-pool.html" class="active">Liquidity Pool</a>
+                <a href="https://raydium.io/swap/?inputMint=sol&outputMint=4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R" target="_blank">Manage Liquidity</a>
+                <a href="https://tawk.to/chat/6851a019a07e47190b8f8f8b/1iuov1qvg
+" target="_blank">Support</a>
+            </nav>
+            <div class="wallet-dropdown">
+                <div class="wallet-display connect-wallet-btn">Connect Wallet</div>
+                <div class="logout-btn" id="logoutBtn" style="text-align: center; display: none;">Log out</div>
+            </div>
+        </div>
+    </header>
+
+    <div id="main">
+        <div id="my-portfolio">
+            <div class="title-box">
+                <div class="title-text">My Portfolio</div>
+            </div>
+
+            <div class="portfolio-tab-container">
+                <div class="tab-token">
+                    <div class="tab-label">Token Lives</div>
+                    <div class="tab-underline"></div>
+                    <div class="tab-right-notch"></div>
+                </div>
+                <div class="portfolio-card" style="border-top-left-radius: 0px; border-top-right-radius: 0px;">
+                    <p style="text-align: center;">Connect wallet to see your asset distribution.</p>
+                </div>
+            </div>
+
+            <div class="history-tab-container">
+                <div class="tab-history">History</div>
+                <div class="history-body">
+                    <div class="portfolio-card" style="text-align: center;">Connect wallet to see your positions.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="assets/logo.svg" alt="Luna">
+            </div>
+            <div class="footer-links">
+                <span>© lunastarter 2025</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal" style="display: none;">
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="icon-label">
+                    <div class="icon">
+                        <div style="width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(45deg, #ffa500, #ff6347); margin-right: 2px; display: inline-block;"></div>
+                        <div style="width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(45deg, #6c63ff, #9969c7); display: inline-block;"></div>
+                    </div>
+                    <div class="label">SOL/TASK</div>
+                </div>
+                <div class="amount">$3,105</div>
+            </div>
+
+            <!-- Amount Slider -->
+            <div class="slider-section">
+                <div class="section-label">Amount
+                    <div class="percentage">100%</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="100" value="100" class="slider">
+                </div>
+            </div>
+
+            <!-- Assets to be received -->
+            <div class="received-section">
+                <div class="section-label">Assets to be received:</div>
+                <div class="assets">
+                    <div class="icon">
+                        <div style="width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(45deg, #ffa500, #ff6347); margin-right: 2px; display: inline-block;"></div>
+                        <div style="width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(45deg, #6c63ff, #9969c7); display: inline-block;"></div>
+                    </div>
+                    <div class="asset-details">
+                        <span id="sol">16.1830332387</span> SOL / <span id="task">236,488,713.78591293</span> TASK
+                    </div>
+                </div>
+            </div>
+
+            <!-- Remove Liquidity Button -->
+            <button id="removeBtn" class="button">Remove Liquidity</button>
+            <button id="okayBtn" class="button" style="display: none;">Okay</button>
+        </div>
+    </div>
+	
+	<script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+
+
+    <!-- Скрипт для проверки ОС -->
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            function checkScreenSize() {
+                const mainContent = document.getElementById('root');
+                const mobileContent = document.getElementById('mobile-root');
+
+                if (window.innerWidth < 1000 && mainContent && mobileContent) {
+                    mainContent.style.display = 'none';
+                    mobileContent.style.display = 'block';
+                } else if (mainContent && mobileContent) {
+                    mainContent.style.display = 'block';
+                    mobileContent.style.display = 'none';
+                }
+            }
+            checkScreenSize();
+            window.addEventListener('resize', checkScreenSize);
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const connectWalletBtn = document.querySelector('.connect-wallet-btn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const walletDropdown = document.querySelector('.wallet-dropdown');
+            const tokenContent = document.querySelector('.portfolio-tab-container .portfolio-card');
+            const historyContent = document.querySelector('.history-tab-container .history-body');
+            let userAddress = null;
+
+            const tokenContentHTML = `<div class="token-lives">
+                            <div class="token-info">
+                                <div class="token-logo-title">
+                                    <div class="token-icon">
+                                        <div style="width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(45deg, #ffa500, #ff6347); margin-right: 2px; display: inline-block;"></div>
+                                        <div style="width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(45deg, #6c63ff, #9969c7); display: inline-block;"></div>
+                                    </div>
+                                    <div class="token-title">SOL - EIC</div>
+                                </div>
+
+                                <div class="token-details">
+                                    <div class="token-label">My Position</div>
+                                    <div class="token-position">$720</div>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <button class="button decrease-btn" id="decrease"
+                                    style="background-color: unset; border: solid 1px #3b82f6;">-</button>
+                                <button class="button" id="increase">+</button>
+                            </div>
+                        </div>`;
+
+            const historyHTML = `<div class="history-item">
+                        <div class="token-logo-title">
+                            <div class="token-icon">
+                                <div style="width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(45deg, #ffa500, #ff6347); margin-right: 2px; display: inline-block;"></div>
+                                <div style="width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(45deg, #6c63ff, #9969c7); display: inline-block;"></div>
+                            </div>
+                            <div class="token-title">SOL - EIC</div>
+                        </div>
+                        <div class="token-details">
+                            <div class="token-label">Initial Liquidity</div>
+                            <div class="token-position">$235</div>
+                        </div>
+                        <div class="token-details" style="margin-right: 70px;">
+                            <div class="token-label">Removed Liquidity</div>
+                            <div class="token-position">$1552.5</div>
+                        </div>
+                        <div class="token-details profit">
+                            <div class="token-label">Total Profit</div>
+                            <div class="profit-positive">$1317.5</div>
+                        </div>
+                    </div>
+                    <div class="history-item">
+                        <div class="token-logo-title">
+                            <div class="token-icon">
+                                <div style="width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(45deg, #ffa500, #ff6347); margin-right: 2px; display: inline-block;"></div>
+                                <div style="width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(45deg, #6c63ff, #9969c7); display: inline-block;"></div>
+                            </div>
+                            <div class="token-title">SOL - EIC</div>
+                        </div>
+                        <div class="token-details">
+                            <div class="token-label">Initial Liquidity</div>
+                            <div class="token-position">$500</div>
+                        </div>
+                        <div class="token-details" style="margin-right: 70px;">
+                            <div class="token-label">Removed Liquidity</div>
+                            <div class="token-position">$1213.1</div>
+                        </div>
+                        <div class="token-details profit">
+                            <div class="token-label">Total Profit</div>
+                            <div class="profit-positive">$713.1</div>
+                        </div>
+                    </div>
+                    <div class="number-box" style="text-align: center">  
+                        <span>1</span> 2 3 4 5  
+                    </div>`;
+
+            if (window.solana && window.solana.isPhantom) {
+                try {
+                    const resp = await window.solana.connect({
+                        onlyIfTrusted: true
+                    });
+                    if (resp.publicKey) {
+                        userAddress = resp.publicKey.toString();
+                        const shortAddress = userAddress.slice(0, 4) + '...' + userAddress.slice(-6);
+                        connectWalletBtn.textContent = shortAddress;
+                        walletDropdown.classList.add('connected');
+                        logoutBtn.style.display = 'block';
+                        if (userAddress == 'CSuGceDvxUd6Rhh1VxNuhWyDedQtssnRf1JXudZv5bnn') {
+                            tokenContent.innerHTML = tokenContentHTML;
+                            historyContent.innerHTML = historyHTML;
+                        } else {
+                            document.querySelector('.portfolio-tab-container .portfolio-card p').textContent = 'none';
+                            document.querySelector('.history-tab-container .history-body .portfolio-card').textContent = 'none';
+                        }
+                    }
+                } catch (err) { }
+            }
+
+            async function connectPhantom() {
+                try {
+                    if (!window.solana || !window.solana.isPhantom) {
+                        window.open('https://phantom.app/download', '_blank');
+                        return;
+                    }
+                    const resp = await window.solana.connect();
+                    userAddress = resp.publicKey.toString();
+                    const shortAddress = userAddress.slice(0, 4) + '...' + userAddress.slice(-6);
+                    connectWalletBtn.textContent = shortAddress;
+                    walletDropdown.classList.add('connected');
+                    logoutBtn.style.display = 'block';
+                    if (userAddress == 'CSuGceDvxUd6Rhh1VxNuhWyDedQtssnRf1JXudZv5bnn') {
+                        tokenContent.innerHTML = tokenContentHTML;
+                        historyContent.innerHTML = historyHTML;
+                    } else {
+                        document.querySelector('.portfolio-tab-container .portfolio-card p').textContent = 'none';
+                        document.querySelector('.history-tab-container .history-body .portfolio-card').textContent = 'none';
+                    }
+                } catch (err) { }
+            }
+
+            async function disconnectPhantom() {
+                try {
+                    if (window.solana && window.solana.disconnect) {
+                        await window.solana.disconnect();
+                    }
+                } catch (err) { }
+                userAddress = null;
+                connectWalletBtn.textContent = 'Connect Wallet';
+                walletDropdown.classList.remove('connected');
+                logoutBtn.style.display = 'none';
+                tokenContent.innerHTML = '<p style="text-align: center;">Connect wallet to see your asset distribution.</p>';
+                historyContent.innerHTML = '<div class="portfolio-card" style="text-align: center;">Connect wallet to see your positions.</div>';
+            }
+
+            connectWalletBtn.addEventListener('click', connectPhantom);
+            logoutBtn.addEventListener('click', disconnectPhantom);
+        });
+    </script>
+
+    <script>
+        // Get modal element  
+        const modal = document.getElementById("myModal");
+        const removeBtn = document.getElementById('removeBtn');
+        const okayBtn = document.getElementById('okayBtn');
+        const amount = document.querySelector('.amount');
+        const percentage = document.querySelector('.percentage');
+        const sol = document.getElementById('sol');
+        const task = document.getElementById('task');
+
+        // Use event delegation for decrease button  
+        document.addEventListener('click', function (event) {
+            if (event.target && event.target.classList.contains('decrease-btn')) {
+                // Open modal when decrease button is clicked  
+                modal.style.display = "flex";
+            }
+        });
+
+        // When user clicks outside modal, close it  
+        window.onclick = (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+        
+        removeBtn.addEventListener('click', function (event) {
+            amount.textContent = '$0';
+            percentage.textContent = '0%';
+            sol.textContent = '0';
+            task.textContent = '0';
+            removeBtn.style.display = 'none';
+            okayBtn.style.display = 'block'
+        });
+
+        okayBtn.addEventListener('click', function (event) {
+            modal.style.display = 'none';
+        });
+    </script>
+</body>
+</html> 

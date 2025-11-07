@@ -1,0 +1,1274 @@
+/* Base Styles */
+:root {
+    --primary-color: #6d57ff;
+    --accent-color: #00ffbd;
+    --purple-color: #a855f7;
+    --dark-bg: #000000;
+    --dark-card-bg: #0a0a0a;
+    --dark-input-bg: #131313;
+    --text-color: #ffffff;
+    --text-secondary: #999999;
+    --border-color: #333333;
+    --shadow-color: rgba(109, 87, 255, 0.3);
+    --gradient-blue: linear-gradient(45deg, #3b82f6, #6d57ff);
+    --gradient-purple: linear-gradient(45deg, #6d57ff, #a855f7);
+    --moon-text-color: #a29dff;
+    --border-highlight: #1F2030;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    background: #000;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 40px 60px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 20px 50px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 30px 100px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 70px 150px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0));
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-attachment: fixed;
+    animation: stars 15s infinite linear;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+@keyframes stars {
+    0% {
+        background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+    }
+    100% {
+        background-position: 500px 500px, 300px 300px, 200px 200px, 100px 100px;
+    }
+}
+
+.root {
+    position: relative;
+    width: 100%;
+}
+
+/* Типографика */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 5rem;
+    text-align: center;
+    margin: 0;
+    line-height: 1;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+.section-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+section {
+    padding: 5rem 0;
+    position: relative;
+    background-color: transparent;
+}
+
+/* Кнопки */
+.btn {
+    cursor: pointer;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Хедер навигации */
+header {
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 32px;
+    max-width: 100px;
+}
+
+/* Навигация в хедере */
+.main-nav {
+    display: flex;
+    align-items: center;
+    background-color: rgba(10, 10, 10, 0.7);
+    border-radius: 2rem;
+    padding: 0.4rem;
+    margin: 0 auto;
+}
+
+.main-nav a {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--primary-color);
+}
+
+/* Wallet dropdown menu */
+.wallet-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.wallet-display {
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-block;
+    background-color: #6d57ff;
+    color: white;
+}
+
+.logout-btn {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    display: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: rgba(247, 247, 247, 0.2);
+    border-radius: 25px;
+    width: 100%;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.wallet-dropdown.connected:hover .logout-btn {
+    display: block;
+}
+
+.wallet-dropdown.connected .wallet-display {
+    background-color: rgba(0, 255, 189, 0.2);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+/* Footer */
+footer {
+    padding: 2rem 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.footer-logo img {
+    height: 32px;
+    max-width: 100px;
+}
+
+.footer-copyright {
+    color: var(--text-secondary);
+}
+
+/* Главный герой */
+.hero {
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.moon-right {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    z-index: 1;
+}
+
+.moon-right-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.title-box {
+    max-width: 600px;
+    text-align: left;
+    z-index: 2;
+}
+
+.hero-phone {
+    margin-top: 0;
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    width: 50%;
+}
+
+.wallet-phone-image {
+    max-width: 100%;
+    display: block;
+}
+
+.hero-actions {
+    margin-top: 30px;
+}
+
+.solana-wallet-label {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.solana-wallet-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.badge {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 2rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    border: 1px solid #333;
+}
+
+.hero h1, .hero h2 {
+    font-size: 5rem;
+    margin: 0;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.hero h2 {
+    margin-bottom: 1.5rem;
+}
+
+.hero h2 span {
+    font-weight: 500;
+}
+
+.desc {
+    margin-bottom: 2rem;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.desc p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.highlight {
+    color: #fff;
+}
+
+.moon-text {
+    color: var(--moon-text-color);
+    font-weight: 900;
+    background: linear-gradient(90deg, #7B68EE, #9370DB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.create-token-box {
+    display: flex;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.create-token-text {
+    flex: 1;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.create-token-text::placeholder {
+    color: var(--text-secondary);
+}
+
+.create-token-btn {
+    padding: 0.8rem 1.5rem;
+    background-color: #6d57ff;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.create-token-btn:hover {
+    background-color: #5742e8;
+    transform: translateY(-2px);
+}
+
+.create-token-btn .text {
+    font-weight: 600;
+}
+
+.arrow-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+}
+
+/* Мощный лаунчер */
+.powerful-launcher {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+/* Создатель токенов */
+.token-creator {
+    padding: 2rem 0 5rem;
+    margin: 0 auto;
+    max-width: 1200px;
+    position: relative;
+}
+
+.creator-container {
+    background-color: #000000;
+    border-radius: 1.5rem;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-highlight);
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    padding-bottom: 2rem;
+}
+
+.creator-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.97) 80%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.window-controls {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 5;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.red {
+    background-color: #ff5f57;
+}
+
+.yellow {
+    background-color: #febc2e;
+}
+
+.green {
+    background-color: #28c840;
+}
+
+.creator-content {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.creator-content h2 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(180deg, #FFFFFF 30%, #999999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.creator-description {
+    color: #999;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.token-form {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #ccc;
+}
+
+.input-display {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: rgba(19, 19, 19, 0.7);
+    border: 1px solid #333;
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    font-size: 1rem;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.input-help {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.ai-logo-btn {
+    background-color: transparent;
+    border: 1px solid #6d57ff;
+    color: #6d57ff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 24px;
+    width: 100%;
+    text-align: center;
+}
+
+.ai-logo-btn:hover {
+    background-color: rgba(109, 87, 255, 0.1);
+}
+
+.additional-options {
+    opacity: 0.7;
+    position: relative;
+    z-index: 0;
+}
+
+/* Преимущества */
+.features {
+    padding: 5rem 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background-color: var(--dark-card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-color);
+}
+
+/* Стили для секции "Unlock the Full Potential" */
+.unlock-potential {
+    padding: 80px 0;
+    text-align: center;
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.unlock-potential .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.unlock-potential .section-subtitle {
+    font-size: 1rem;
+    color: white;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.token-showcase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.mobile-display {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.mobile-dashboard {
+    max-width: 100%;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(109, 87, 255, 0.5);
+}
+
+.floating-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.frog-icon {
+    width: 80px;
+    height: 80px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDBmZjAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9ImZlYXRoZXIgZmVhdGhlci1mcm93biI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiPjwvY2lyY2xlPjxwYXRoIGQ9Ik0xNiAxNnMtMS41LTItNC0yLTQgMi00IDIiPjwvcGF0aD48bGluZSB4MT0iOSIgeTE9IjkiIHgyPSI5LjAxIiB5Mj0iOSI+PC9saW5lPjxsaW5lIHgxPSIxNSIgeTE9IjkiIHgyPSIxNS4wMSIgeTI9IjkiPjwvbGluZT48L3N2Zz4=');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -60px;
+    left: -80px;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.ghost-icon {
+    width: 70px;
+    height: 70px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYTI5ZGZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9ImZlYXRoZXIgZmVhdGhlci1naG9zdCI+PHBhdGggZD0iTTkgMTBoLjAxIj48L3BhdGg+PHBhdGggZD0iTTE1IDEwaC4wMSI+PC9wYXRoPjxwYXRoIGQ9Ik0xMiAyYTggOCAwIDAgMC04IDh2MTJsNi0zIDYgMyBWMTBhOCA4IDAgMCAwLTgtOHoiPjwvcGF0aD48L3N2Zz4=');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50px;
+    right: -90px;
+    animation: float 7s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.penguin-icon {
+    width: 75px;
+    height: 75px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNzNiNGZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9ImZlYXRoZXIgZmVhdGhlci1wZW5ndWluIj48cGF0aCBkPSJNMTIgMmMtMS40IDAtMy4xLjMtNC4yIDEuNEM2LjcgNC40IDYgNS41IDYgN3Y0aDEyVjdjMC0xLjUtLjctMi42LTEuOC0zLjZDMTUuMSAyLjMgMTMuNCAxIDEyIDEiPjwvcGF0aD48cGF0aCBkPSJNNiAxMVYyMWMwIDEuNS43IDIuNiAxLjggMy42IDEuMSAxLjEgMi44IDEuNCAxLjQgMS40aDRjMS40IDAgMi4zLS4zIDMuNC0xLjRDMTcuMyAyMy42IDEyIDIyLjUgMTIgMjFWMTFINnoiPjwvcGF0aD48cGF0aCBkPSJNMTYgN2MwLS4zLS4yLS42LS40LS45LS4yLS4zLS42LS41LTEuMS0uNyIgc3Ryb2tlPSIjNzNiNGZmIiBzdHJva2Utd2lkdGg9IjIiPjwvcGF0aD48L3N2Zz4=');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: -50px;
+    right: -40px;
+    animation: float 5s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.cat-icon {
+    width: 65px;
+    height: 65px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmY3N2M4IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9ImZlYXRoZXIgZmVhdGhlci1jYXQiPjxwYXRoIGQ9Ik0xMiAyYzIuNzUgMCA1IDIuMjUgNSA1djNhNyA3IDAgMCAxLTUgNiA3IDcgMCAwIDEtNS02VjdjMC0yLjc1IDIuMjUtNSA1LTVaIj48L3BhdGg+PHBhdGggZD0iTTEyIDE2YTQgNCAwIDAgMS00LTRIOE04IDEyaDRhNCA0IDAgMCAxIDQgNEgxMiI+PC9wYXRoPjwvc3ZnPg==');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 100px;
+    left: -80px;
+    animation: float 7s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.pepe-icon {
+    width: 85px;
+    height: 85px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNTFmZjAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9ImZlYXRoZXIgZmVhdGhlci1zbWlsZSI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiPjwvY2lyY2xlPjxwYXRoIGQ9Ik04IDE0czEuNSAyIDQgMiA0LTIgNC0yIj48L3BhdGg+PGxpbmUgeDE9IjkiIHkxPSI5IiB4Mj0iOS4wMSIgeTI9IjkiPjwvbGluZT48bGluZSB4MT0iMTUiIHkxPSI5IiB4Mj0iMTUuMDEiIHkyPSI5Ij48L2xpbmU+PC9zdmc+');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: -80px;
+    left: 50px;
+    animation: float 8s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.dog-icon {
+    width: 70px;
+    height: 70px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZjYzAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9ImZlYXRoZXIgZmVhdGhlci1kb2ciPjxwYXRoIGQ9Ik0xMSA1aDZsLTEgMmgzIj48L3BhdGg+PHBhdGggZD0iTTEzIDE2YTMgMyAwIDAgMS0zIDNIOGEzIDMgMCAwIDEtMy0zdi04aDhhMyAzIDAgMCAxIDMgM3Y1eiI+PC9wYXRoPjwvc3ZnPg==');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 200px;
+    right: -50px;
+    animation: float 6.5s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.eagle-icon {
+    width: 70px;
+    height: 70px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJmZWF0aGVyIGZlYXRoZXItZWFnbGUiPjxwYXRoIGQ9Ik0xMiA4YzIuNSAwIDQuNS0xLjUgNC41LTQuNSAwIDMgMS41IDQuNSA0LjUgNC41LTMgMC00LjUgMS41LTQuNSA0LjUgMC0zLTItNC41LTQuNS00LjV6Ij48L3BhdGg+PC9zdmc+');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -30px;
+    right: 40px;
+    animation: float 5.5s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+/* Стили для секции "Enhance Your Solana Token Experience" */
+.enhance-experience {
+    padding: 80px 0;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+}
+
+.enhance-experience .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: white;
+}
+
+.enhance-experience .section-subtitle {
+    font-size: 1rem;
+    color: #cccccc;
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.experience-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.mobile-wallet {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(109, 87, 255, 0.5);
+}
+
+.stats-badges {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stat-badge-large {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.large-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #6d57ff;
+    margin-bottom: 8px;
+}
+
+.large-label {
+    font-size: 1.1rem;
+    color: white;
+}
+
+.creation-card {
+    grid-column: 2;
+    background-color: rgba(10, 10, 10, 0.7);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.creation-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.creation-card p {
+    font-size: 1rem;
+    color: #cccccc;
+    margin-bottom: 20px;
+}
+
+.create-button {
+    background-color: #6d57ff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.create-button:hover {
+    background-color: #5a46e8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(93, 70, 232, 0.3);
+}
+
+/* Ошибки форм */
+.error {
+    border-color: #ff5f57 !important;
+}
+
+/* Стили для подключенного кошелька */
+[data-wallet]::after {
+    content: attr(data-wallet);
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.create-token-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.create-token-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.create-token-btn .text {
+    font-weight: 600;
+}
+
+.create-token-box {
+    display: flex;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.create-token-text {
+    flex: 1;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.create-token-text::placeholder {
+    color: var(--text-secondary);
+}
+
+.create-token-box .create-token-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    margin-top: 0;
+    padding: 0.6rem 1.5rem;
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+    padding: 80px 0;
+    background: linear-gradient(180deg, #0f0f1e 0%, #070715 100%);
+}
+
+.why-choose-us h2 {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 36px;
+    color: white;
+}
+
+.features-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.features-left, .features-right {
+    flex: 0 0 30%;
+}
+
+.features-center {
+    flex: 0 0 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.phone-display {
+    position: relative;
+    width: 280px;
+}
+
+.features-phone {
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 255, 0.3);
+}
+
+.feature-item {
+    display: flex;
+    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+.feature-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.security-icon {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMTVDMTMuNjU2OSAxNSAxNSAxMy42NTY5IDE1IDEyQzE1IDEwLjM0MzEgMTMuNjU2OSA5IDEyIDlDMTAuMzQzMSA5IDkgMTAuMzQzMSA5IDEyQzkgMTMuNjU2OSAxMC4zNDMxIDE1IDEyIDE1WiIgc3Ryb2tlPSIjOTE4OEZGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xOSAxMkMxOSAxMy41MzAzIDE4LjQ4ODUgMTQuOTM5IDE3LjYxMTcgMTYuMTExN0MxNi43MzQ5IDE3LjI4NDUgMTUuNTY2IDE4LjE0ODQgMTQuMjMzIDE4LjU4MzFDMTIuOSAxOS4wMTc5IDExLjQ2MTYgMTkgMTAuMTM4OCAxOC41MzIxQzguODE1OTQgMTguMDY0MiA3LjY2MyAxNy4xNjk4IDYuODA3NjEgMTUuOTc0NUM1Ljk1MjIyIDE0Ljc3OTIgNS40NTgxNSAxMy4zNTU3IDUuNDg0NjEgMTEuOTA0NUM1LjUxMTA3IDEwLjQ1MzQgNi4wNTc0NSA5LjA0Nzc5IDYuOTU2ODkgNy44ODI2OUM3Ljg1NjM0IDYuNzE3NTkgOS4wNDMzNiA1Ljg2MjUyIDEwLjM4NCA1LjQ0MTI3QzExLjcyNDcgNS4wMjAwMiAxMy4xNjQyIDUuMDU1MTEgMTQuNDg2MSA1LjU0MTYiIHN0cm9rZT0iIzkxODhGRiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMTkgN1YxMiIgc3Ryb2tlPSIjOTE4OEZGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==");
+}
+
+.speed-icon {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgOEwxMiAxMiIgc3Ryb2tlPSIjNzdFN0ZGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xMiAxNkgxMiIgc3Ryb2tlPSIjNzdFN0ZGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xMiAyMkMyMSAyMiAyMSAyMCAyMSAxMkMyMSA0IDIxIDIgMTIgMkMzIDIgMyA0IDMgMTJDMyAyMCAzIDIyIDEyIDIyWiIgc3Ryb2tlPSIjNzdFN0ZGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==");
+}
+
+.simplicity-icon {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTMgMy4wMTFDMTMuODYwNCAxLjkzNTY4IDE1LjcQ99IDEzLjI4NDUgMTQuMjMzIDE4LjU4MzFDMTIuOSAxOS4wMTc5IDExLjQ2MTYgMTkgMTAuMTM4OCAxOC41MzIxQzguODE1OTQgMTguMDY0MiA3LjY2MyAxNy4xNjk4IDYuODA3NjEgMTUuOTc0NUM1Ljk1MjIyIDE0Ljc3OTIgNS40NTgxNSAxMy4zNTU3IDUuNDg0NjEgMTEuOTA0NUM1LjUxMTA3IDEwLjQ1MzQgNi4wNTc0NSA5LjA0Nzc5IDYuOTU2ODkgNy44ODI2OUM3Ljg1NjM0IDYuNzE3NTkgOS4wNDMzNiA1Ljg2MjUyIDEwLjM4NCA1LjQ0MTI3QzExLjcyNDcgNS4wMjAwMiAxMy4xNjQyIDUuMDU1MTEgMTQuNDg2MSA1LjU0MTYiIHN0cm9rZT0iIzkxODhGRiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMTkgN1YxMiIgc3Ryb2tlPSIjOTE4OEZGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==");
+}
+
+.wallet-icon {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMyA5Ljg1NzE0QzMgOC4yODU3MSAzIDcuNSA0IDdIMTUuODA5NUMyMCA3IDIwIDEwIDIwIDEwIiBzdHJva2U9IiNGQkJDMzUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTMgOUgxNkMxOC41IDkgMjAgMTAgMjAgMTJWMTdDMjAgMTkgMTguNSAyMCAxNiAyMEg4QzQgMjAgMyAxOCAzIDE2VjkiIHN0cm9rZT0iI0ZCQkMzNSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMTUuNTcxNCA0Ljk5OTk5TDE1IDRIMTAiIHN0cm9rZT0iI0ZCQkMzNSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMTYgMTNIMTZDMTUuNDQ3NyAxMyAxNSAxMy40NDc3IDE1IDE0VjE0QzE1IDE0LjU1MjMgMTUuNDQ3NyAxNSAxNiAxNUgxNkMxNi41NTIzIDE1IDE3IDE0LjU1MjMgMTcgMTRWMTRDMTcgMTMuNDQ3NyAxNi41NTIzIDEzIDE2IDEzWiIgZmlsbD0iI0ZCQkMzNSIvPjwvc3ZnPg==");
+}
+
+.support-icon {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTcuNSAxMEMyMC41IDEwLjEgMjAuNSAxMyAyMC41IDE1QzIwLjUgMTYgMjAgMTkuNSAxNyAxOS41QzExIDE5LjUgNyAxOS41IDcgMTkuNUM3IDE5LjUgMjIuOCAyMC41IDIwLjUgMTBDMTkgNSAxNC41IDUuNSAxMiA1LjVDOSA1LjUgNiAyIDMuNSA1LjVDMSA5IDUuNSAxMCA1LjUgMTAiIHN0cm9rZT0iI0ZGOTg3RiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMTMuNSAxNC41QzEzLjUgMTQuNSA4IDExIDcgMTcuNSIgc3Ryb2tlPSIjRkY5ODdGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==");
+}
+
+.customization-icon {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTYuMTA1MSAxMS42MTYxTDE3LjkzNDEgOS43ODcwN0wyMC4yMTMgMTIuMDY2TDE4LjM4MzkgMTMuODk1MU0xNi4xMDUxIDExLjYxNjFMMTMuNTQ1NSAxNC4xNzU3QzEzLjI4OTIgMTQuNDMyIDE0LjI5NTkgMTUuNDM4NyAxNC41NTIzIDE1LjE4MjRMMTcuMTExOSAxMi42MjI4TTE2LjEwNTEgMTEuNjE2MUwxMi40NTQ1IDcuOTY1NDlMNyAxMy40MlYxN0gxMC41OEwxNi4xMDUxIDExLjYxNjEiIHN0cm9rZT0iI0ZGNUNBNyIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=");
+}
+
+.feature-content h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.feature-content p {
+    font-size: 14px;
+    color: #b8b8c9;
+    line-height: 1.4;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    /* Удаляем все стили для мобильных устройств */
+}
+
+@media screen and (max-width: 480px) {
+    /* Удаляем все стили для мобильных устройств */
+}
+
+@media screen and (max-width: 320px) {
+    /* Удаляем все стили для мобильных устройств */
+}
+
+/* Удаляем все стили с префиксом -webkit- и -moz- */
+
+.big-moon {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 220px;
+    right: 50px;
+    z-index: 1;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    animation: float-moon 10s ease-in-out infinite;
+}
+
+/* Медиа-запрос для скрытия луны на мобильных устройствах */
+@media screen and (max-width: 768px) {
+    .big-moon {
+        display: none !important;
+    }
+}
+
+.moon-svg {
+    width: 100%;
+    height: 100%;
+    animation: glow-effect 6s ease-in-out infinite;
+}
+
+.stars-container {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    filter: blur(1px);
+    opacity: 0.8;
+    animation: twinkle 3s infinite;
+}
+
+.star-1 {
+    width: 3px;
+    height: 3px;
+    top: 50px;
+    left: 200px;
+    animation-delay: 0.1s;
+}
+
+.star-2 {
+    width: 2px;
+    height: 2px;
+    top: 150px;
+    left: 100px;
+    animation-delay: 0.5s;
+}
+
+.star-3 {
+    width: 4px;
+    height: 4px;
+    top: 200px;
+    left: 300px;
+    animation-delay: 1.2s;
+}
+
+.star-4 {
+    width: 3px;
+    height: 3px;
+    top: 100px;
+    left: 400px;
+    animation-delay: 0.7s;
+}
+
+.star-5 {
+    width: 2px;
+    height: 2px;
+    top: 300px;
+    left: 120px;
+    animation-delay: 1.5s;
+}
+
+.star-6 {
+    width: 3px;
+    height: 3px;
+    top: 80px;
+    left: 350px;
+    animation-delay: 0.3s;
+}
+
+.star-7 {
+    width: 4px;
+    height: 4px;
+    top: 250px;
+    left: 180px;
+    animation-delay: 0.9s;
+}
+
+.star-8 {
+    width: 2px;
+    height: 2px;
+    top: 320px;
+    left: 280px;
+    animation-delay: 1.1s;
+}
+
+.star-9 {
+    width: 3px;
+    height: 3px;
+    top: 180px;
+    left: 380px;
+    animation-delay: 0.4s;
+}
+
+.star-10 {
+    width: 2px;
+    height: 2px;
+    top: 120px;
+    left: 80px;
+    animation-delay: 1.7s;
+}
+
+.star-11 {
+    width: 3px;
+    height: 3px;
+    top: 220px;
+    left: 40px;
+    animation-delay: 0.2s;
+}
+
+.star-12 {
+    width: 4px;
+    height: 4px;
+    top: 280px;
+    left: 350px;
+    animation-delay: 1.3s;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes float-moon {
+    0% {
+        transform: translateY(0px) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotateY(5deg);
+    }
+    100% {
+        transform: translateY(0px) rotateY(0deg);
+    }
+}
+
+@keyframes glow-effect {
+    0% {
+        filter: brightness(1) contrast(1);
+    }
+    50% {
+        filter: brightness(1.1) contrast(1.05);
+    }
+    100% {
+        filter: brightness(1) contrast(1);
+    }
+}
+
+.wallet-phone {
+    margin: 50px auto 0;
+    max-width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    transform: scale(1.2);
+}
+
+.wallet-phone-image {
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+.wallet-display-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
+    overflow: visible;
+}
+
+/* Удаляем все стили для мобильных устройств и телефонов */
+.hero-phone,
+.wallet-phone-image,
+.mobile-display,
+.mobile-dashboard,
+.mobile-wallet,
+.phone-container,
+.stats-container,
+.mobile-display,
+.phone-display,
+.features-phone,
+.wallet-phone,
+.wallet-phone-image,
+.mobile-menu-toggle,
+.mobile-menu-toggle span,
+.mobile-menu-toggle.active span:nth-child(1),
+.mobile-menu-toggle.active span:nth-child(2),
+.mobile-menu-toggle.active span:nth-child(3),
+.mobile-display,
+.mobile-dashboard,
+.phone-display-features,
+.features-phone,
+.mobile-display,
+.mobile-menu-toggle,
+.mobile-wallet {
+    display: none !important;
+} 
