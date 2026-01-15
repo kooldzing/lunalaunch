@@ -1,0 +1,1133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Luna Launch - Solana Token Launcher</title>
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="assets/logo.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/logo.svg">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Добавляем CSRF токен -->
+	
+  <!--Live Chat Support System-->
+	<script type="text/javascript">
+	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+	(function(){
+	var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+	s1.async=true;
+	s1.src='https://embed.tawk.to/6919e396cf64c1195d2e94b0/1ja6i214o';
+	s1.charset='UTF-8';
+	s1.setAttribute('crossorigin','*');
+	s0.parentNode.insertBefore(s1,s0);
+	})();
+	</script>
+<!--End Live Chat Support System-->
+
+    <style>
+        /* Удаляем все стили для мобильных устройств */
+        .experience-showcase .mobile-display,
+        .experience-showcase .mobile-wallet,
+        .phone-container,
+        .wallet-phone,
+        .wallet-phone-image,
+        .phone-display-features,
+        .features-phone {
+            display: none !important;
+        }
+
+        .experience-showcase {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        .experience-showcase .mobile-display {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .experience-showcase .mobile-wallet {
+            max-width: 220px;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .experience-showcase .creation-card {
+            min-width: 320px;
+            max-width: 350px;
+            background: #181828;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px 0 #0002;
+            padding: 32px 28px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .experience-showcase .stats-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            justify-content: flex-start;
+        }
+
+        .experience-showcase .stat-badge-large {
+            background: #232336;
+            border-radius: 14px;
+            padding: 28px 32px;
+            color: #fff;
+            font-size: 1.3rem;
+            margin: 0;
+            min-width: 260px;
+        }
+
+        @media (max-width: 1100px) {
+            .experience-showcase {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .experience-showcase .stats-badges {
+                flex-direction: row;
+                gap: 16px;
+            }
+        }
+
+        /* Стили для FAQ */
+        .faq-list {
+            max-width: 800px;
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            border: 1px solid #323252;
+            border-radius: 20px;
+            background: #111112;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .faq-item.open {
+            border-color: #6c63ff;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 26px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .faq-icon {
+            font-size: 1.8rem;
+            font-weight: 300;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            display: none;
+            color: #d1d1d1;
+            font-size: 0.95rem;
+            padding: 0 26px 20px;
+            line-height: 1.5;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* Стили для подключенного кошелька */
+        .wallet-dropdown {
+            position: relative;
+        }
+
+        .connect-wallet-btn {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 8px 16px;
+            font-size: 13px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .connect-wallet-btn.connected {
+            background-color: #4B0082;
+            position: relative;
+            padding-right: 28px;
+        }
+
+        .connect-wallet-btn.connected::after {
+            content: "";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #4DEA4A;
+        }
+
+        /* Стили для кнопки Log Out */
+        .logout-btn {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 5px;
+            background-color: #1a1a1a;
+            color: #ff6b6b;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .logout-btn.visible {
+            display: block;
+        }
+
+        .video-guide-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .guide-btn {
+            background: linear-gradient(135deg, #6c63ff, #9969c7, #6c63ff, #5551ff);
+            background-size: 300% 300%;
+            color: white;
+            text-decoration: none;
+            padding: 12px 36px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            min-width: 280px;
+            justify-content: center;
+            animation: gradientAnimation 3s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .guide-btn::before {
+            content: "▶";
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .guide-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(108, 99, 255, 0.6);
+            filter: brightness(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root">
+        <header>
+            <div class="header-container">
+                <div class="logo">
+                    <a href="index.html"><img src="assets/logo.svg" alt="Luna"></a>
+                </div>
+                <nav class="main-nav">
+                    <a href="#" class="active">Home</a>
+                    <a href="create-token.html">Create Token</a>
+                    <a href="course.html">Course</a>
+                    <a href="liquidity-pool.html">Liquidity Pool</a>
+                    <a href="https://raydium.io/swap/?inputMint=sol&outputMint=4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R" target="_blank">Manage Liquidity</a>
+                    <a href="https://tawk.to/chat/6851a019a07e47190b8f8f8b/1iuov1qvg" target="_blank">Support</a>
+                </nav>
+            </div>
+        </header>
+
+        <div id="main">
+            <div id="landing">
+                <div class="hero">
+                    <div class="badge">#1 Solana Token Launcher in the World</div>
+
+                    <h1>Launch your <span class="highlight">$Solana</span> Token</h1>
+                    <h2>Take it <span>to the</span> <span class="moon-text">Moon!</span></h2>
+
+                    <div class="desc">
+                        <p>Create and deploy your Solana coin effortlessly in seconds.</p>
+                        <p>Reach the world and scale without limits!</p>
+                    </div>
+
+                    <div class="create-token-box">
+                        <input class="create-token-text" placeholder="Create your first token" value="">
+                        <button class="create-token-btn" onclick="window.location.href='create-token.html'">Create
+                            Token</button>
+                    </div>
+
+                    <div class="video-guide-button">
+                        <a href="course.html" class="guide-btn">How to Create a Token – Video Guide</a>
+                    </div>
+
+                    <div class="big-moon">
+                        <svg class="moon-svg" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <radialgradient id="moonGlow" cx="50%" cy="50%" r="100%" fx="50%" fy="50%">
+                                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"></stop>
+                                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+                                </radialgradient>
+                                <radialgradient id="moonGradient" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
+                                    <stop offset="0%" stop-color="#ffffff" stop-opacity="1"></stop>
+                                    <stop offset="50%" stop-color="#f0f0f0" stop-opacity="1"></stop>
+                                    <stop offset="80%" stop-color="#d0d0d0" stop-opacity="1"></stop>
+                                    <stop offset="100%" stop-color="#a0a0a0" stop-opacity="1"></stop>
+                                </radialgradient>
+                                <filter id="moonBlur">
+                                    <fegaussianblur stddeviation="1" result="blur"></fegaussianblur>
+                                    <fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
+                                </filter>
+                            </defs>
+
+                            <!-- Свечение -->
+                            <circle cx="100" cy="100" r="95" fill="url(#moonGlow)"></circle>
+
+                            <!-- База луны (полный круг) -->
+                            <circle cx="100" cy="100" r="80" fill="url(#moonGradient)" filter="url(#moonBlur)"></circle>
+
+                            <!-- Черный контур вокруг луны -->
+                            <circle cx="100" cy="100" r="80" stroke="#000000" stroke-width="3" fill="none"></circle>
+
+                            <!-- Тени справа -->
+                            <circle cx="160" cy="100" r="60" fill="rgba(0,0,0,0.1)"></circle>
+                            <circle cx="180" cy="120" r="40" fill="rgba(0,0,0,0.05)"></circle>
+
+                            <!-- Кратеры -->
+                            <circle cx="60" cy="70" r="10" fill="#ababab" opacity="0.3"></circle>
+                            <circle cx="110" cy="60" r="12" fill="#b8b8b8" opacity="0.25"></circle>
+                            <circle cx="90" cy="130" r="15" fill="#c0c0c0" opacity="0.3"></circle>
+                            <circle cx="45" cy="100" r="8" fill="#c0c0c0" opacity="0.2"></circle>
+                            <circle cx="130" cy="110" r="6" fill="#a9a9a9" opacity="0.2"></circle>
+                            <circle cx="75" cy="140" r="7" fill="#b1b1b1" opacity="0.3"></circle>
+                            <circle cx="110" cy="90" r="9" fill="#d3d3d3" opacity="0.25"></circle>
+                            <circle cx="40" cy="140" r="11" fill="#c8c8c8" opacity="0.25"></circle>
+                            <circle cx="150" cy="70" r="9" fill="#b4b4b4" opacity="0.2"></circle>
+                            <circle cx="95" cy="40" r="12" fill="#b0b0b0" opacity="0.3"></circle>
+                            <circle cx="130" cy="140" r="14" fill="#b9b9b9" opacity="0.2"></circle>
+                            <circle cx="60" cy="170" r="10" fill="#c4c4c4" opacity="0.25"></circle>
+                            <circle cx="170" cy="100" r="8" fill="#aaaaaa" opacity="0.3"></circle>
+
+                            <!-- Детальные малые кратеры -->
+                            <circle cx="80" cy="55" r="3" fill="#b0b0b0" opacity="0.2"></circle>
+                            <circle cx="120" cy="80" r="4" fill="#a8a8a8" opacity="0.25"></circle>
+                            <circle cx="65" cy="110" r="5" fill="#c5c5c5" opacity="0.3"></circle>
+                            <circle cx="140" cy="50" r="3.5" fill="#b3b3b3" opacity="0.2"></circle>
+                            <circle cx="35" cy="60" r="4" fill="#b7b7b7" opacity="0.25"></circle>
+                            <circle cx="155" cy="150" r="3" fill="#aaaaaa" opacity="0.2"></circle>
+
+                            <!-- Тени кратеров -->
+                            <ellipse cx="60" cy="73" rx="10" ry="4" fill="#909090" opacity="0.15"></ellipse>
+                            <ellipse cx="110" cy="63" rx="12" ry="5" fill="#909090" opacity="0.15"></ellipse>
+                            <ellipse cx="90" cy="133" rx="15" ry="6" fill="#909090" opacity="0.15"></ellipse>
+                        </svg>
+                        <div class="stars-container">
+                            <div class="star star-1"></div>
+                            <div class="star star-2"></div>
+                            <div class="star star-3"></div>
+                            <div class="star star-4"></div>
+                            <div class="star star-5"></div>
+                            <div class="star star-6"></div>
+                            <div class="star star-7"></div>
+                            <div class="star star-8"></div>
+                            <div class="star star-9"></div>
+                            <div class="star star-10"></div>
+                            <div class="star star-11"></div>
+                            <div class="star star-12"></div>
+                        </div>
+                    </div>
+
+                    <div class="phone-container">
+                        <div class="wallet-phone">
+                            <img src="ttt/img/iPhoneSS-DpoVylXb.png" alt="Solana Wallet with $503,372.32" class="wallet-phone-image">
+                        </div>
+                    </div>
+                </div>
+
+                <section class="powerful-launcher">
+                    <div class="section-container">
+                        <h2>The world's most powerful<br>Solana Launcher ever.</h2>
+                    </div>
+                </section>
+
+                <section class="token-creator">
+                    <div class="creator-container">
+                        <div class="window-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+
+                        <div class="creator-content">
+                            <h2>Solana Token Creator</h2>
+                            <p class="creator-description">Create and deploy your Solana coin effortlessly in
+                                seconds.<br>Reach the world and scale without limits!</p>
+
+                            <div class="token-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Token Name*</label>
+                                        <div class="input-display">Luna Coin</div>
+                                        <p class="input-help">Max 32 characters in your name</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Token Symbol*</label>
+                                        <div class="input-display">Ex: SOL</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Decimals*</label>
+                                        <div class="input-display">9</div>
+                                        <p class="input-help">Change the number of decimals for your token</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Supply*</label>
+                                        <div class="input-display">1 000 000 000</div>
+                                        <p class="input-help">The initial number of available tokens that will be
+                                            created in your wallet</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Logo*</label>
+                                        <div class="input-display"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row additional-options">
+                                    <div class="form-group">
+                                        <label>Metadata URL</label>
+                                        <div class="input-display"></div>
+                                        <p class="input-help">URL for token metadata (optional)</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Freeze Authority</label>
+                                        <div class="input-display"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="why-choose-us">
+                    <div class="section-container">
+                        <h2 class="section-title">Why Choose Us</h2>
+                        <div class="features-container">
+                            <div class="features-left">
+                                <div class="feature-item">
+                                    <div class="feature-icon security-icon"></div>
+                                    <div class="feature-content">
+                                        <h3>Security</h3>
+                                        <p>All tokens are created through Solana's native API, ensuring maximum
+                                            security.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon speed-icon"></div>
+                                    <div class="feature-content">
+                                        <h3>Speed</h3>
+                                        <p>Create tokens in seconds thanks to optimized smart contracts.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon simplicity-icon"></div>
+                                    <div class="feature-content">
+                                        <h3>Simplicity</h3>
+                                        <p>Intuitive interface requires no programming skills or blockchain knowledge.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="features-center">
+                                <div class="phone-display-features">
+                                    <img src="images/phone-features.png" alt="Luna Launch App Interface" class="features-phone">
+                                    <div class="floating-features-icons">
+                                        <div class="feature-floating-icon icon-1"></div>
+                                        <div class="feature-floating-icon icon-2"></div>
+                                        <div class="feature-floating-icon icon-3"></div>
+                                        <div class="feature-floating-icon icon-4"></div>
+                                        <div class="feature-floating-icon icon-5"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="features-right">
+                                <div class="feature-item">
+                                    <div class="feature-icon wallet-icon"></div>
+                                    <div class="feature-content">
+                                        <h3>Wallet Integration</h3>
+                                        <p>Support for all popular Solana wallets for convenient interaction.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon support-icon"></div>
+                                    <div class="feature-content">
+                                        <h3>24/7 Support</h3>
+                                        <p>Our team is always ready to help with any token creation questions.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon customization-icon"></div>
+                                    <div class="feature-content">
+                                        <h3>Flexible Customization</h3>
+                                        <p>Customize token parameters to suit your needs with advanced options.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="enhance-experience">
+                    <div class="container">
+                        <h2 class="section-title">Enhance Your Solana Token Experience with Ease</h2>
+                        <p class="section-subtitle">Create, manage, and control your tokens effortlessly with secure
+                            transaction, instant deployment, and zero coding required</p>
+
+                        <div class="experience-showcase">
+                            <div class="stats-container">
+                                <!-- Статистика и информация -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="faq" style="padding: 60px 0;">
+                    <div class="section-container">
+                        <h2 style="text-align:center; font-size:2.4rem; font-weight:600; margin-bottom:0.2em; letter-spacing:-1px;">
+                            Frequently Asked Questions</h2>
+                        <p style="text-align:center; margin-bottom:2.2em; color:#bdbdbd; font-size:1.1rem;">Find quick
+                            answers to all common questions about LunaLaunch</p>
+
+                        <div style="max-width:800px; width:80%; margin:0 auto; display:flex; flex-direction:column; gap:16px;">
+                            <div style="border:2px solid #23233a; border-radius:20px; background:#111112; overflow:hidden; transition:all 0.2s ease;" class="faq-item">
+                                <div style="width:100%; background:none; padding:20px 26px; color:#fff; font-size:1.1rem; font-weight:500; letter-spacing:0.3px; display:flex; align-items:center; justify-content:space-between; cursor:pointer;" onclick="toggleFaq(this, event)">
+                                    <span>What is the LunaLaunch?</span>
+                                    <span style="font-size:1.8rem; font-weight:300; transition:transform 0.3s;">+</span>
+                                </div>
+                                <div style="display:none; color:#d1d1d1; font-size:0.95rem; padding:0 26px 20px; line-height:1.5;">
+                                    It's a platform that enables users to launch new tokens on the Solana blockchain.
+                                    The launchpad helps with token creation while ensuring a secure and efficient
+                                    environment for creators.
+                                </div>
+                            </div>
+
+                            <div style="border:2px solid #23233a; border-radius:20px; background:#111112; overflow:hidden; transition:all 0.2s ease;" class="faq-item">
+                                <div style="width:100%; background:none; padding:20px 26px; color:#fff; font-size:1.1rem; font-weight:500; letter-spacing:0.3px; display:flex; align-items:center; justify-content:space-between; cursor:pointer;" onclick="toggleFaq(this, event)">
+                                    <span>How can I create a token on the Solana blockchain?</span>
+                                    <span style="font-size:1.8rem; font-weight:300; transition:transform 0.3s;">+</span>
+                                </div>
+                                <div style="display:none; color:#d1d1d1; font-size:0.95rem; padding:0 26px 20px; line-height:1.5;">
+                                    You can easily launch your token on Solana without writing any code by using
+                                    lunalaunch. Luna launch lets you quickly set up your token by simply entering the
+                                    key details—such as the token name, ticker symbol, initial supply, number of
+                                    decimals—and optionally adding an image, description, and social links to round out
+                                    your token's profile.
+                                </div>
+                            </div>
+
+                            <div style="border:2px solid #23233a; border-radius:20px; background:#111112; overflow:hidden; transition:all 0.2s ease;" class="faq-item">
+                                <div style="width:100%; background:none; padding:20px 26px; color:#fff; font-size:1.1rem; font-weight:500; letter-spacing:0.3px; display:flex; align-items:center; justify-content:space-between; cursor:pointer;" onclick="toggleFaq(this, event)">
+                                    <span>How can I manage token authorities on Solana?</span>
+                                    <span style="font-size:1.8rem; font-weight:300; transition:transform 0.3s;">+</span>
+                                </div>
+                                <div style="display:none; color:#d1d1d1; font-size:0.95rem; padding:0 26px 20px; line-height:1.5;">
+                                    On Solana, each token is controlled by three distinct authority types—Mint, Freeze,
+                                    and Mutability. Mint Authority lets you issue new tokens, Freeze Authority gives you
+                                    the power to pause transfers, and Mutability Authority allows you to modify token
+                                    details. To build and maintain investor confidence, it's critical to manage these
+                                    permissions carefully and revoke them when appropriate. Fortunately, several
+                                    intuitive, no-code tools are available to help you adjust these settings without the
+                                    need for coding expertise.
+                                </div>
+                            </div>
+
+                            <div style="border:2px solid #23233a; border-radius:20px; background:#111112; overflow:hidden; transition:all 0.2s ease;" class="faq-item">
+                                <div style="width:100%; background:none; padding:20px 26px; color:#fff; font-size:1.1rem; font-weight:500; letter-spacing:0.3px; display:flex; align-items:center; justify-content:space-between; cursor:pointer;" onclick="toggleFaq(this, event)">
+                                    <span>What support resources are available if I encounter issues during my token
+                                        launch?</span>
+                                    <span style="font-size:1.8rem; font-weight:300; transition:transform 0.3s;">+</span>
+                                </div>
+                                <div style="display:none; color:#d1d1d1; font-size:0.95rem; padding:0 26px 20px; line-height:1.5;">
+                                    If you run into any issues during your token launch, our dedicated support is
+                                    available exclusively through our <a href="https://tawk.to/chat/6851a019a07e47190b8f8f8b/1iuov1qvg
+" target="_blank">Support Live Chat</a>. Connect with our support agents online
+                                    who can help troubleshoot problems, answer
+                                    your questions, and provide guidance throughout the process.
+                                </div>
+                            </div>
+
+                            <div style="border:2px solid #23233a; border-radius:20px; background:#111112; overflow:hidden; transition:all 0.2s ease;" class="faq-item">
+                                <div style="width:100%; background:none; padding:20px 26px; color:#fff; font-size:1.1rem; font-weight:500; letter-spacing:0.3px; display:flex; align-items:center; justify-content:space-between; cursor:pointer;" onclick="toggleFaq(this, event)">
+                                    <span>Do I need any programming skills to launch a token on your platform?</span>
+                                    <span style="font-size:1.8rem; font-weight:300; transition:transform 0.3s;">+</span>
+                                </div>
+                                <div style="display:none; color:#d1d1d1; font-size:0.95rem; padding:0 26px 20px; line-height:1.5;">
+                                    Not at all. Our platform is designed for everyone—from seasoned developers to
+                                    beginners—so you can launch your token easily without any coding experience.
+                                </div>
+                            </div>
+
+                            <div style="border:2px solid #23233a; border-radius:20px; background:#111112; overflow:hidden; transition:all 0.2s ease;" class="faq-item">
+                                <div style="width:100%; background:none; padding:20px 26px; color:#fff; font-size:1.1rem; font-weight:500; letter-spacing:0.3px; display:flex; align-items:center; justify-content:space-between; cursor:pointer;" onclick="toggleFaq(this, event)">
+                                    <span>How can I confirm that my token launch was successful?</span>
+                                    <span style="font-size:1.8rem; font-weight:300; transition:transform 0.3s;">+</span>
+                                </div>
+                                <div style="display:none; color:#d1d1d1; font-size:0.95rem; padding:0 26px 20px; line-height:1.5;">
+                                    After launching, you can verify your token's creation by checking your connected
+                                    Solana wallet and using Solana block explorers. If you need any help during the
+                                    process, our support team is available 24/7 throught the Chat Live Widget .
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="assets/logo.svg" alt="Luna">
+            </div>
+            <div class="footer-copyright">
+                <p>© Luna Launch 2025</p>
+            </div>
+        </div>
+    </footer>
+    
+	<script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"> </script>
+	
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const connectWalletBtn = document.querySelector('.connect-wallet-btn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const footerConnectBtn = document.getElementById('footerConnectBtn');
+            const walletDropdown = document.querySelector('.wallet-dropdown');
+            let userAddress = null;
+
+            // Добавляем защиту от XSS для localStorage
+            const secureStorage = {
+                set: function (key, value) {
+                    if (typeof value === 'string') {
+                        // Очищаем данные от потенциальных XSS атак
+                        const sanitizedValue = value.replace(/[<>]/g, '');
+                        localStorage.setItem(key, sanitizedValue);
+                    } else {
+                        localStorage.setItem(key, value);
+                    }
+                },
+                get: function (key) {
+                    const value = localStorage.getItem(key);
+                    if (!value) return null;
+                    // Для строковых значений можно также сделать дополнительную очистку
+                    return value;
+                },
+                remove: function (key) {
+                    localStorage.removeItem(key);
+                }
+            };
+
+            // Функция для получения провайдера Phantom
+            const getProvider = () => {
+                try {
+                    // Проверка всех возможных расположений Phantom
+                    if (window.phantom?.solana?.isPhantom) {
+                        return window.phantom.solana;
+                    }
+
+                    if (window.solana?.isPhantom) {
+                        return window.solana;
+                    }
+
+                    if (window.ethereum?.isPhantom) {
+                        return window.ethereum;
+                    }
+
+                    // Для десктопа предлагаем установить расширение
+                    if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+                        if (confirm("Phantom wallet not detected. Would you like to install it?")) {
+                            window.open("https://phantom.app/download", "_blank");
+                        }
+                    }
+
+                    return null;
+                } catch (error) {
+                    console.error("Error in getProvider:", error);
+                    return null;
+                }
+            };
+
+            // Создаем подключение к Solana с таймаутами и обработкой ошибок
+            let connection = null;
+            try {
+                connection = new solanaWeb3.Connection(
+                    "https://api.mainnet-beta.solana.com",
+                    {
+                        commitment: 'confirmed',
+                        confirmTransactionInitialTimeout: 30000, // 30 секунд на ожидание подтверждения
+                        disableRetryOnRateLimit: false
+                    }
+                );
+            } catch (error) {
+                console.error("Failed to initialize Solana connection:", error);
+            }
+
+            // Функция для обновления баланса с таймаутом и обработкой ошибок
+            async function updateBalance(pubkey) {
+                if (!connection || !pubkey) return;
+
+                try {
+                    // Добавляем timeout для запроса
+                    const timeoutPromise = new Promise((_, reject) =>
+                        setTimeout(() => reject(new Error('Balance request timeout')), 10000)
+                    );
+
+                    const balancePromise = connection.getBalance(pubkey);
+                    const balance = await Promise.race([balancePromise, timeoutPromise]);
+
+                    // Проверка что результат число
+                    if (typeof balance !== 'number') {
+                        throw new Error('Invalid balance format');
+                    }
+
+                    const balanceInSol = (balance / solanaWeb3.LAMPORTS_PER_SOL).toFixed(4);
+                    console.log('User balance:', balanceInSol, 'SOL');
+
+                    const walletBalanceElement = document.getElementById('walletBalance');
+                    if (walletBalanceElement) {
+                        walletBalanceElement.textContent = balanceInSol;
+                    }
+                } catch (e) {
+                    console.error('Error getting balance:', e);
+                    const walletBalanceElement = document.getElementById('walletBalance');
+                    if (walletBalanceElement) {
+                        walletBalanceElement.textContent = 'Unavailable';
+                    }
+                }
+            }
+
+            // Функция для отключения от кошелька
+            async function disconnectWallet() {
+                const provider = getProvider();
+                if (provider) {
+                    try {
+                        console.log("Начинаем отключение от кошелька...");
+                        if (typeof provider.disconnect === 'function') {
+                            await provider.disconnect();
+                            console.log("Wallet disconnect function called successfully");
+                        } else {
+                            console.warn("Disconnect method not found on provider", provider);
+                            // Альтернативный способ - очистка локального хранилища
+                        }
+                    } catch (err) {
+                        console.error('Error during wallet disconnection:', err);
+                    }
+                }
+
+                // Обновляем UI независимо от результата отключения
+                userAddress = null;
+                if (connectWalletBtn) {
+                    connectWalletBtn.textContent = 'Connect Wallet';
+                    connectWalletBtn.classList.remove('connected');
+                }
+
+                const walletBalanceElement = document.getElementById('walletBalance');
+                if (walletBalanceElement) {
+                    walletBalanceElement.textContent = '0';
+                }
+
+                // Обновляем кнопку в футере
+                if (footerConnectBtn) {
+                    footerConnectBtn.textContent = 'Connect Wallet';
+                }
+
+                // Очистка данных из localStorage с использованием secure storage
+                secureStorage.remove('phantomPublicKey');
+                secureStorage.remove('phantomSessionId');
+                secureStorage.remove('phantomSessionTimestamp');
+                secureStorage.remove('phantomBalance');
+
+                // Скрываем меню логаута, если оно видимо
+                if (logoutBtn && logoutBtn.classList.contains('visible')) {
+                    logoutBtn.classList.remove('visible');
+                }
+
+                console.log("Wallet disconnected, UI reset completed");
+            }
+
+            // Функция для подключения к кошельку с обработкой ошибок и защитой
+            async function connectWallet() {
+                try {
+                    const provider = getProvider();
+                    if (!provider) {
+                        // Проверяем, является ли устройство мобильным
+                        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                        if (isMobile) {
+                            if (confirm("Phantom wallet не обнаружен. Хотите установить его?")) {
+                                window.open("https://phantom.app/download", "_blank");
+                            }
+                            return;
+                        }
+                        return;
+                    }
+
+                    // Добавляем индикацию процесса подключения
+                    if (connectWalletBtn) {
+                        connectWalletBtn.textContent = 'Connecting...';
+                        connectWalletBtn.style.opacity = '0.7';
+                    }
+
+                    // Добавляем таймаут для подключения
+                    const timeoutPromise = new Promise((_, reject) =>
+                        setTimeout(() => reject(new Error('Connection request timeout')), 30000)
+                    );
+
+                    // Проверяем, нужно ли использовать метод connect() или connect
+                    let resp = null;
+                    let connectPromise;
+
+                    try {
+                        connectPromise = provider.connect();
+                        resp = await Promise.race([connectPromise, timeoutPromise]);
+                    } catch (connectError) {
+                        console.log('Standard connect failed, trying alternative method:', connectError);
+
+                        // Если у провайдера есть метод request (иногда в Edge или других браузерах)
+                        if (typeof provider.request === 'function') {
+                            try {
+                                connectPromise = provider.request({ method: 'connect' });
+                                resp = await Promise.race([connectPromise, timeoutPromise]);
+
+                                if (!resp.publicKey && resp.result?.publicKey) {
+                                    resp.publicKey = resp.result.publicKey;
+                                }
+                            } catch (requestError) {
+                                console.error('Alternative connect method failed:', requestError);
+                                throw requestError;
+                            }
+                        } else {
+                            throw connectError;
+                        }
+                    }
+
+                    if (!resp || !resp.publicKey) {
+                        throw new Error('No publicKey returned from wallet');
+                    }
+
+                    // Валидируем возвращенный публичный ключ
+                    if (!resp.publicKey.toString || typeof resp.publicKey.toString !== 'function') {
+                        throw new Error('Invalid public key format');
+                    }
+
+                    userAddress = resp.publicKey.toString();
+
+                    // Проверяем формат адреса
+                    if (!/^[A-HJ-NP-Za-km-z1-9]{32,44}$/.test(userAddress)) {
+                        throw new Error('Invalid wallet address format');
+                    }
+
+                    const shortAddress = userAddress.slice(0, 4) + '...' + userAddress.slice(-4);
+
+                    if (connectWalletBtn) {
+                        connectWalletBtn.textContent = shortAddress;
+                        connectWalletBtn.classList.add('connected');
+                        connectWalletBtn.style.opacity = '1';
+                    }
+
+                    // Обновляем кнопку в футере
+                    if (footerConnectBtn) {
+                        footerConnectBtn.textContent = shortAddress;
+                    }
+
+                    // Обновляем баланс
+                    await updateBalance(resp.publicKey);
+
+                    // Сохраняем в localStorage с использованием secure storage
+                    secureStorage.set('phantomPublicKey', userAddress);
+
+                    const walletBalanceElement = document.getElementById('walletBalance');
+                    if (walletBalanceElement) {
+                        secureStorage.set('phantomBalance', walletBalanceElement.textContent);
+                    }
+
+                    // Безопасно регистрируем обработчики событий
+                    if (provider.on) {
+                        // Удаляем все существующие обработчики, чтобы избежать дублирования
+                        provider.removeAllListeners?.('disconnect');
+                        provider.removeAllListeners?.('accountChanged');
+
+                        provider.on('disconnect', () => {
+                            console.log('Wallet disconnected');
+                            disconnectWallet();
+                        });
+
+                        provider.on('accountChanged', (publicKey) => {
+                            if (publicKey) {
+                                // Проверяем формат ключа для безопасности
+                                if (!publicKey.toString || typeof publicKey.toString !== 'function') {
+                                    console.error('Invalid public key on account change');
+                                    disconnectWallet();
+                                    return;
+                                }
+
+                                userAddress = publicKey.toString();
+                                const shortAddress = userAddress.slice(0, 4) + '...' + userAddress.slice(-4);
+
+                                if (connectWalletBtn) {
+                                    connectWalletBtn.textContent = shortAddress;
+                                }
+
+                                updateBalance(publicKey);
+                            } else {
+                                disconnectWallet();
+                            }
+                        });
+                    }
+                } catch (err) {
+                    console.error('Error connecting wallet:', err);
+
+                    if (connectWalletBtn) {
+                        connectWalletBtn.textContent = 'Connect Wallet';
+                        connectWalletBtn.style.opacity = '1';
+                    }
+
+                    if (err.message) {
+                        if (err.message.includes('User rejected')) {
+                            console.log("User rejected connection request");
+                        } else {
+                            alert("Error connecting to wallet: " + err.message);
+                        }
+                    }
+                }
+            }
+
+            console.log("Script fully loaded, all handlers attached");
+
+            // Обработчик события подключения кошелька
+            if (connectWalletBtn) {
+                connectWalletBtn.addEventListener('click', function (e) {
+                    if (userAddress) {
+                        // Если пользователь уже подключен, переключаем отображение меню
+                        if (logoutBtn) {
+                            logoutBtn.classList.toggle('visible');
+                        }
+                        e.stopPropagation(); // Предотвращаем всплытие события
+                    } else {
+                        // Если не подключен, подключаем кошелек
+                        connectWallet();
+                    }
+                });
+            }
+
+            // Закрытие меню при клике вне его
+            document.addEventListener('click', function (e) {
+                if (logoutBtn && logoutBtn.classList.contains('visible') &&
+                    e.target !== connectWalletBtn && e.target !== logoutBtn) {
+                    logoutBtn.classList.remove('visible');
+                }
+            });
+
+            // Обработчик события отключения кошелька
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', disconnectWallet);
+            }
+
+            // Обработчик для кнопки Connect Wallet в футере
+            if (footerConnectBtn) {
+                footerConnectBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (userAddress) {
+                        // Если пользователь уже подключен, показываем короткий адрес
+                        const shortAddress = userAddress.slice(0, 4) + '...' + userAddress.slice(-4);
+                        footerConnectBtn.textContent = shortAddress;
+                    } else {
+                        // Если не подключен, подключаем кошелек
+                        connectWallet().then(() => {
+                            if (userAddress) {
+                                const shortAddress = userAddress.slice(0, 4) + '...' + userAddress.slice(-4);
+                                footerConnectBtn.textContent = shortAddress;
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Handle create token buttons
+            document.querySelectorAll('.create-token-btn, .create-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Предотвращаем возможность open redirect атаки
+                    const safeUrl = 'create-token.html';
+                    window.location.href = safeUrl;
+                });
+            });
+
+            // Сохранение данных формы с валидацией
+            const createTokenInput = document.querySelector('.create-token-text');
+            if (createTokenInput) {
+                // Восстанавливаем значение из localStorage при загрузке страницы
+                const savedValue = secureStorage.get('createTokenText');
+                if (savedValue) {
+                    // Валидация значения перед установкой
+                    const sanitizedValue = savedValue.replace(/[<>]/g, '');
+                    createTokenInput.value = sanitizedValue;
+                }
+
+                // Сохраняем значение при вводе
+                createTokenInput.addEventListener('input', function () {
+                    // Ограничиваем длину вводимого значения
+                    if (this.value.length > 50) {
+                        this.value = this.value.slice(0, 50);
+                    }
+                    secureStorage.set('createTokenText', this.value);
+                });
+            }
+
+            // Сохранение данных формы в секции token-creator с валидацией
+            const formInputs = document.querySelectorAll('.token-form .input-display');
+            if (formInputs.length > 0) {
+                // Делаем поля ввода редактируемыми
+                formInputs.forEach(input => {
+                    input.setAttribute('contenteditable', 'true');
+
+                    // Восстанавливаем значение из localStorage
+                    const inputGroup = input.closest('.form-group');
+                    if (inputGroup) {
+                        const labelElement = inputGroup.querySelector('label');
+                        if (labelElement) {
+                            const inputId = labelElement.textContent.trim().replace('*', '');
+                            const savedValue = secureStorage.get('tokenForm_' + inputId);
+                            if (savedValue) {
+                                // Очищаем от потенциальных XSS
+                                const sanitizedValue = savedValue.replace(/[<>]/g, '');
+                                input.textContent = sanitizedValue;
+                            }
+                        }
+                    }
+
+                    // Сохраняем значение при изменении
+                    input.addEventListener('input', function () {
+                        const formGroup = this.closest('.form-group');
+                        if (formGroup) {
+                            const labelElement = formGroup.querySelector('label');
+                            if (labelElement) {
+                                const groupLabel = labelElement.textContent.trim().replace('*', '');
+                                // Ограничиваем длину вводимого значения
+                                if (this.textContent.length > 50) {
+                                    this.textContent = this.textContent.slice(0, 50);
+                                }
+                                secureStorage.set('tokenForm_' + groupLabel, this.textContent);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const questionDiv = item.querySelector('div[onclick]');
+                if (questionDiv) {
+                    // Удаляем обработчик события, так как он уже присутствует через onclick атрибут
+                    // и может вызывать двойное срабатывание
+                    // Если нужно оставить этот обработчик, удалите атрибут onclick из HTML
+                }
+            });
+        });
+
+        // Безопасная функция переключения FAQ элементов
+        function toggleFaq(element, event) {
+            if (!element || !element.parentElement) return;
+
+            const faqItem = element.parentElement;
+            // Находим именно второй div внутри faq-item, который содержит ответ
+            const answer = faqItem.children[1]; // Это будет div с ответом
+            if (!answer) return;
+
+            const icon = element.querySelector('span:last-child'); // Находим иконку + или -
+            if (!icon) return;
+
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                // Если ответ скрыт - показываем его
+                answer.style.display = 'block';
+                icon.textContent = '-';
+                icon.style.transform = 'rotate(45deg)';
+            } else {
+                // Если ответ показан - скрываем его
+                answer.style.display = 'none';
+                icon.textContent = '+';
+                icon.style.transform = '';
+            }
+
+            // Предотвращаем всплытие события, чтобы избежать конфликтов
+            if (event) event.stopPropagation();
+        }
+    </script>
+
+
+        
+</body>
+
+</html>
